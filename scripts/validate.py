@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Validate the series: structure, headings, links, closing notes and unresolved markers."""
+"""Validate the series: structure, headings, links, figures, closing notes and unresolved markers."""
 from __future__ import annotations
 from dataclasses import dataclass
 import json
 from pathlib import Path
 import re
 import sys
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_INDEX_END = '<!-- SITE-INDEX-END'
@@ -16,6 +17,11 @@ FENCE = re.compile(r'^(```|~~~)')
 LINK = re.compile(r'(?<!\!)\[[^\]]*\]\(([^)\s]+)\)')
 NEXT_NOTE = re.compile(r'^\*次回：第(\d+)回「(.+?)」\*$', re.M)
 BARE_URL = re.compile(r'https?://[A-Za-z0-9._~:/?#\[\]@!$&\'()*+,;=%-]+(?=[^\x00-\x7f])')
+FIGURE_DIR = 'assets/illustrations'
+FIGURE_REF = re.compile(r'^!\[([^\]]*)\]\(([^)\s]+)\)[ \t]*$', re.M)
+FIGURE_WITH_CAPTION = re.compile(r'^!\[[^\]]*\]\([^)\s]+\)[ \t]*\n\n\*図(\d+)-(\d+)：.+\*[ \t]*$', re.M)
+SVG_FORBIDDEN = {'script', 'foreignObject', 'image', 'iframe', 'style', 'a'}
+SVG_MIN_FONT = 14
 
 
 @dataclass
@@ -23,6 +29,8 @@ class Result:
     chapters: int = 0
     headings: int = 0
     links: int = 0
+    figures: int = 0
+    svg_files: int = 0
 
 
 def headings(text: str) -> tuple[list[tuple[int, str]], bool]:
@@ -55,6 +63,60 @@ def check_links(path: Path, text: str, errors: list[str], result: Result) -> Non
         dest = (path.parent / target.split('#')[0]).resolve()
         if not dest.is_relative_to(ROOT) or not dest.exists():
             errors.append(f'{path.relative_to(ROOT)}: missing link target {target}')
+
+
+def svg_errors(path: Path) -> list[str]:
+    """図のSVGが、自己完結で受動的（スクリプト・外部参照なし）かを検査する。"""
+    name = path.name
+    try:
+        root = ET.parse(path).getroot()
+    except ET.ParseError as exc:
+        return [f'{name}: SVG parse error: {exc}']
+    local = lambda el: el.tag.rsplit('}', 1)[-1]  # noqa: E731
+    errors = []
+    if local(root) != 'svg':
+        return [f'{name}: root element must be svg']
+    if not root.get('viewBox'):
+        errors.append(f'{name}: missing viewBox')
+    if root.get('role') != 'img':
+        errors.append(f'{name}: svg must have role="img"')
+    children = {local(el) for el in root.iter()}
+    for needed in ('title', 'desc'):
+        if needed not in children:
+            errors.append(f'{name}: missing <{needed}>')
+    for el in root.iter():
+        tag = local(el)
+        if tag in SVG_FORBIDDEN:
+            errors.append(f'{name}: forbidden SVG element <{tag}>')
+        for attr, value in el.attrib.items():
+            key = attr.rsplit('}', 1)[-1]
+            if key.lower().startswith('on'):
+                errors.append(f'{name}: event handler attribute {key}')
+            if key == 'href' or 'url(http' in value or value.strip().startswith(('http:', 'https:', '//')):
+                errors.append(f'{name}: external reference in {key}')
+        size = el.get('font-size')
+        if size and float(size) < SVG_MIN_FONT:
+            errors.append(f'{name}: font-size {size} is below {SVG_MIN_FONT}px')
+    return errors
+
+
+def check_figures(chapter: dict, text: str, errors: list[str], result: Result) -> None:
+    """本文のSVG参照・キャプションと series.json の figures を突き合わせる。"""
+    figures = chapter.get('figures', [])
+    body = strip_code(text)
+    refs = FIGURE_REF.findall(body)
+    result.figures += len(refs)
+    path = chapter['path']
+    if [target for _, target in refs] != [f'../{FIGURE_DIR}/{name}' for name in figures]:
+        errors.append(f'{path}: figure references must match series.json figures, in order')
+    for alt, target in refs:
+        if not alt.strip():
+            errors.append(f'{path}: missing alt text for {target}')
+        if not (ROOT / path).parent.joinpath(target).resolve().exists():
+            errors.append(f'{path}: missing figure file {target}')
+    captions = [(int(a), int(b)) for a, b in FIGURE_WITH_CAPTION.findall(body)]
+    if captions != [(chapter['number'], i) for i in range(1, len(figures) + 1)]:
+        errors.append(f'{path}: each figure must be followed by a caption 図{chapter["number"]}-1 .. 図{chapter["number"]}-{len(figures)} in order')
 
 
 def validate() -> tuple[Result, list[str]]:
@@ -104,6 +166,20 @@ def validate() -> tuple[Result, list[str]]:
         elif notes:
             errors.append(f'{c["path"]}: last chapter must not announce a next chapter')
         check_links(path, text, errors, result)
+        check_figures(c, text, errors, result)
+
+    listed = {name for c in chapters for name in c.get('figures', [])}
+    figure_dir = ROOT / FIGURE_DIR
+    found = {p.name for p in figure_dir.glob('*.svg')} if figure_dir.exists() else set()
+    for name in sorted(listed - found):
+        errors.append(f'{FIGURE_DIR}/{name}: listed in series.json but missing')
+    for name in sorted(found - listed):
+        errors.append(f'{FIGURE_DIR}/{name}: not listed in series.json')
+    if sum(len(c.get('figures', [])) for c in chapters) != len(listed):
+        errors.append('series.json: a figure is listed more than once')
+    for name in sorted(found & listed):
+        result.svg_files += 1
+        errors += svg_errors(figure_dir / name)
 
     readme = ROOT / series['index']
     log = ROOT / series['log']
@@ -131,7 +207,8 @@ def validate() -> tuple[Result, list[str]]:
 
 def main() -> int:
     result, errors = validate()
-    print(json.dumps({'chapters': result.chapters, 'headings': result.headings, 'links': result.links, 'errors': errors}, ensure_ascii=False, indent=2))
+    print(json.dumps({'chapters': result.chapters, 'headings': result.headings, 'links': result.links,
+                      'figures': result.figures, 'svg_files': result.svg_files, 'errors': errors}, ensure_ascii=False, indent=2))
     return 1 if errors else 0
 
 

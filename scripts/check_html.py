@@ -19,6 +19,8 @@ class Document(HTMLParser):
         self.links: list[tuple[str, str, str]] = []
         self.scripts = 0
         self.h1 = 0
+        self.figures = 0
+        self.images_without_alt = 0
         self.feed(text)
 
     def handle_starttag(self, tag, attributes):
@@ -29,6 +31,10 @@ class Document(HTMLParser):
             self.scripts += 1
         if tag == 'h1':
             self.h1 += 1
+        if tag == 'figure':
+            self.figures += 1
+        if tag == 'img' and not attrs.get('alt', '').strip():
+            self.images_without_alt += 1
         for attr in ('href', 'src'):
             if attr in attrs:
                 self.links.append((tag, attr, attrs[attr]))
@@ -45,6 +51,8 @@ def check(site: Path) -> dict:
                 errors.append(f'{name}: duplicate ID {ident}')
         if doc.scripts:
             errors.append(f'{name}: unexpected script')
+        if doc.images_without_alt:
+            errors.append(f'{name}: {doc.images_without_alt} image(s) without alt text')
         if name.name != 'complete.html' and doc.h1 != 1:
             errors.append(f'{name}: expected one h1, found {doc.h1}')
         for tag, attr, url in doc.links:
@@ -64,6 +72,19 @@ def check(site: Path) -> dict:
     expected = len(series['chapters']) + 3  # index, complete, verification log
     if len(docs) != expected:
         errors.append(f'Expected {expected} HTML pages, found {len(docs)}')
+    total = 0
+    for c in series['chapters']:
+        want = len(c.get('figures', []))
+        total += want
+        page = site / 'articles' / (Path(c['path']).stem + '.html')
+        if page.resolve() in docs and docs[page.resolve()].figures != want:
+            errors.append(f'{page.name}: expected {want} figures, found {docs[page.resolve()].figures}')
+    complete = (site / 'complete.html').resolve()
+    if complete in docs and docs[complete].figures != total:
+        errors.append(f'complete.html: expected {total} figures, found {docs[complete].figures}')
+    for name in (n for c in series['chapters'] for n in c.get('figures', [])):
+        if not (site / 'assets' / 'illustrations' / name).exists():
+            errors.append(f'Missing assets/illustrations/{name}')
     for rel in ('assets/styles.css', '.nojekyll'):
         if not (site / rel).exists():
             errors.append(f'Missing {rel}')

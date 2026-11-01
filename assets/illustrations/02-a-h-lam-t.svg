@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">H-LAM/T：人間を中心にした一つの系</title>
+<desc id="desc">言語・人工物・方法論・訓練を含めて、系として設計する</desc>
+<defs><marker id="arrow-2b5f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2b5f9e" stroke-width="1.4"/></marker></defs>
+<rect width="1200" height="700" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     02     図2-1</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">H-LAM/T：人間を中心にした一つの系</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">言語・人工物・方法論・訓練を含めて、系として設計する</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="50.0" y="200.0" width="720.0" height="400.0" rx="16" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="320.0" y="360.0" width="180.0" height="80.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="410.0" y="396.0" fill="#2b5f9e" font-size="22" text-anchor="middle" font-weight="700">人間</text>
+<text x="410.0" y="422.0" fill="#5d6873" font-size="17" text-anchor="middle" font-weight="400">Human</text>
+<rect x="300.0" y="225.0" width="220.0" height="70.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="410.0" y="256.0" fill="#2b5f9e" font-size="20" text-anchor="middle" font-weight="700">方法論</text>
+<text x="410.0" y="282.0" fill="#5d6873" font-size="17" text-anchor="middle" font-weight="400">Methodology</text>
+<rect x="300.0" y="505.0" width="220.0" height="70.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="410.0" y="536.0" fill="#2b5f9e" font-size="20" text-anchor="middle" font-weight="700">訓練</text>
+<text x="410.0" y="562.0" fill="#5d6873" font-size="17" text-anchor="middle" font-weight="400">Trained</text>
+<rect x="70.0" y="360.0" width="190.0" height="80.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="165.0" y="396.0" fill="#2b5f9e" font-size="20" text-anchor="middle" font-weight="700">言語</text>
+<text x="165.0" y="422.0" fill="#5d6873" font-size="17" text-anchor="middle" font-weight="400">Language</text>
+<rect x="560.0" y="360.0" width="190.0" height="80.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="655.0" y="396.0" fill="#2b5f9e" font-size="20" text-anchor="middle" font-weight="700">人工物</text>
+<text x="655.0" y="422.0" fill="#5d6873" font-size="17" text-anchor="middle" font-weight="400">Artifacts</text>
+<line x1="410.0" y1="295.0" x2="410.0" y2="360.0" stroke="#2b5f9e" stroke-width="2" marker-end="url(#arrow-2b5f9e)" marker-start="url(#arrow-2b5f9e)"/>
+<line x1="410.0" y1="440.0" x2="410.0" y2="505.0" stroke="#2b5f9e" stroke-width="2" marker-end="url(#arrow-2b5f9e)" marker-start="url(#arrow-2b5f9e)"/>
+<line x1="260.0" y1="400.0" x2="320.0" y2="400.0" stroke="#2b5f9e" stroke-width="2" marker-end="url(#arrow-2b5f9e)" marker-start="url(#arrow-2b5f9e)"/>
+<line x1="500.0" y1="400.0" x2="560.0" y2="400.0" stroke="#2b5f9e" stroke-width="2" marker-end="url(#arrow-2b5f9e)" marker-start="url(#arrow-2b5f9e)"/>
+<text x="50.0" y="628.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">H-LAM/T = Human using Language, Artifacts, Methodology, in which he is Trained</text>
+<rect x="800.0" y="200.0" width="350.0" height="200.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="822.0" y="234.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">原典が述べたこと</text>
+<text x="822.0" y="258.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">1962年報告書の定義</text>
+<text x="822.0" y="292.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">人間が、言語・人工物・</text>
+<text x="822.0" y="313.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">方法論を用い、そのため</text>
+<text x="822.0" y="334.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">の訓練を受ける。これら</text>
+<text x="822.0" y="355.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">を一つのシステムとして</text>
+<text x="822.0" y="376.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">捉えて設計する。</text>
+<rect x="800.0" y="420.0" width="350.0" height="190.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="822.0" y="454.0" fill="#c7792b" font-size="20" text-anchor="start" font-weight="700">筆者の現代的な解釈</text>
+<text x="822.0" y="478.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">検証すべき仮説</text>
+<text x="822.0" y="512.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">生成AIも、AI単体では</text>
+<text x="822.0" y="533.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">なく、人間・言語・道具・</text>
+<text x="822.0" y="554.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">作業手順・学習の仕組み</text>
+<text x="822.0" y="575.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">を含む系全体で評価する。</text>
+<text x="50.0" y="672.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">改善の対象は個々の道具ではなく、系全体である。</text>
+</g>
+</svg>

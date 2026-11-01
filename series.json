@@ -15,14 +15,23 @@
       "slug": "past-texts-as-future-designs",
       "title": "過去の文章は、未来の設計書である",
       "summary": "技術は進歩するが、知識は必ずしも継承されない。過去の文献を設計資産として読み直す視点と、その限界を示す。",
-      "path": "articles/01-past-texts-as-future-designs.md"
+      "path": "articles/01-past-texts-as-future-designs.md",
+      "figures": [
+        "01-a-why-not-inherited.svg",
+        "01-b-series-map.svg"
+      ]
     },
     {
       "number": 2,
       "slug": "excavating-forgotten-designs",
       "title": "歴史の中に埋もれた設計を発掘する",
       "summary": "エンゲルバートとアレグザンダーの原典をたどり、実現された部分、継承された部分、残された部分を区別する。",
-      "path": "articles/02-excavating-forgotten-designs.md"
+      "path": "articles/02-excavating-forgotten-designs.md",
+      "figures": [
+        "02-a-h-lam-t.svg",
+        "02-b-alexander-lineage.svg",
+        "02-c-origin-vs-successors.svg"
+      ]
     },
     {
       "number": 3,
@@ -30,6 +39,11 @@
       "title": "文献を読むAIから、設計を発掘するAIへ",
       "summary": "探索、継承調査、仕様化、評価の四工程を、入力・出力・失敗条件つきのAgent Skillとして設計する。",
       "path": "articles/03-from-reading-to-mining-agent.md",
+      "figures": [
+        "03-a-lineage-four-states.svg",
+        "03-b-spec-with-status.svg",
+        "03-c-four-steps-pipeline.svg"
+      ],
       "status": {
         "label": "設計案",
         "text": "この回で示すAgent Skillは設計案です。実装や動作確認はしていません。"
@@ -41,6 +55,11 @@
       "title": "古い器に、新しい水を入れる",
       "summary": "忠実な再現と現代的な拡張を区別し、比較実験の条件を示す。実施前の実験計画として、第1回の問いに答える。",
       "path": "articles/04-reimplementing-old-ideas.md",
+      "figures": [
+        "04-a-requirements-graph.svg",
+        "04-b-who-does-what.svg",
+        "04-c-experiment-design.svg"
+      ],
       "status": {
         "label": "実験計画",
         "text": "この回の再実装と比較実験は未実施です。結果はまだ存在しません。"

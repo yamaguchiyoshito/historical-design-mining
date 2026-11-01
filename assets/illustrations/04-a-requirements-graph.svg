@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">
+<title id="title">要求の関係から、分割の候補を考える</title>
+<desc id="desc">要求をノード、関係をエッジとして構造を見る（関係は例示）</desc>
+<defs></defs>
+<rect width="1200" height="690" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     04     図4-1</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">要求の関係から、分割の候補を考える</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">要求をノード、関係をエッジとして構造を見る（関係は例示）</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1094.0" y="34.0" width="56.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1122.0" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">例示</text>
+<rect x="40.0" y="208.0" width="320.0" height="290.0" rx="16" fill="none" stroke="#2f8f83" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="60.0" y="238.0" fill="#2f8f83" font-size="15" text-anchor="start" font-weight="700">まとまりの候補　注文変更と履歴</text>
+<rect x="450.0" y="208.0" width="320.0" height="290.0" rx="16" fill="none" stroke="#2f8f83" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="470.0" y="238.0" fill="#2f8f83" font-size="15" text-anchor="start" font-weight="700">まとまりの候補　注文確定と在庫</text>
+<rect x="60.0" y="262.0" width="260.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="190.0" y="300.0" fill="#232a33" font-size="17" text-anchor="middle" font-weight="700">注文を登録できる</text>
+<text x="74.0" y="280.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="700">R1</text>
+<rect x="60.0" y="410.0" width="260.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="190.0" y="448.0" fill="#232a33" font-size="17" text-anchor="middle" font-weight="700">変更履歴を保存する</text>
+<text x="74.0" y="428.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="700">R4</text>
+<rect x="480.0" y="262.0" width="260.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="610.0" y="300.0" fill="#232a33" font-size="15" text-anchor="middle" font-weight="700">在庫数を超える注文を受け付けない</text>
+<text x="494.0" y="280.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="700">R2</text>
+<rect x="480.0" y="410.0" width="260.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="610.0" y="448.0" fill="#232a33" font-size="15" text-anchor="middle" font-weight="700">注文確定時に在庫を引き当てる</text>
+<text x="494.0" y="428.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="700">R3</text>
+<line x1="190.0" y1="326.0" x2="190.0" y2="410.0" stroke="#2b5f9e" stroke-width="2"/>
+<text x="206.0" y="374.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="400">注文変更と監査証跡</text>
+<line x1="610.0" y1="326.0" x2="610.0" y2="410.0" stroke="#2b5f9e" stroke-width="4"/>
+<text x="626.0" y="374.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="400">強い整合性制約</text>
+<rect x="830.0" y="340.0" width="280.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="970.0" y="378.0" fill="#232a33" font-size="17" text-anchor="middle" font-weight="700">会計システムへ連携する</text>
+<text x="844.0" y="358.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="700">R5</text>
+<text x="830.0" y="436.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="400">この例では関係を置いていない</text>
+<rect x="40.0" y="546.0" width="1110.0" height="62.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="64.0" y="584.0" fill="#c7792b" font-size="18" text-anchor="start" font-weight="700">権限に応じて操作を制限する　── 複数の機能を横断する</text>
+<text x="1126.0" y="560.0" fill="#5d6873" font-size="14" text-anchor="end" font-weight="700">R6</text>
+<line x1="190.0" y1="546.0" x2="190.0" y2="474.0" stroke="#c7792b" stroke-width="3" stroke-dasharray="8 7"/>
+<circle cx="190.0" cy="474.0" r="5" fill="#c7792b"/>
+<line x1="610.0" y1="546.0" x2="610.0" y2="474.0" stroke="#c7792b" stroke-width="3" stroke-dasharray="8 7"/>
+<circle cx="610.0" cy="474.0" r="5" fill="#c7792b"/>
+<line x1="810.0" y1="220.0" x2="836.0" y2="220.0" stroke="#2b5f9e" stroke-width="5"/>
+<text x="848.0" y="226.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">強い整合性制約</text>
+<line x1="810.0" y1="250.0" x2="836.0" y2="250.0" stroke="#2b5f9e" stroke-width="2"/>
+<text x="848.0" y="256.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">関係がある</text>
+<line x1="810.0" y1="280.0" x2="836.0" y2="280.0" stroke="#c7792b" stroke-width="3" stroke-dasharray="8 7"/>
+<text x="848.0" y="286.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">複数の機能を横断する</text>
+<rect x="810.0" y="302.0" width="26.0" height="16.0" rx="4" fill="#ffffff" stroke="#2f8f83" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="848.0" y="316.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">関係から見えるまとまり</text>
+<text x="50.0" y="662.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">グラフ上のまとまりは、そのままモジュールにはならない。</text>
+</g>
+</svg>

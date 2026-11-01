@@ -12,10 +12,12 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 SERIES_FILE = ROOT / 'series.json'
 STYLES = ROOT / 'site-src' / 'styles.css'
-READER = 'markdown+pipe_tables+autolink_bare_uris-tex_math_dollars-smart'
+ILLUSTRATIONS = ROOT / 'assets' / 'illustrations'
+READER = 'markdown+pipe_tables+autolink_bare_uris-tex_math_dollars-smart-implicit_figures'
 SITE_INDEX_END = '<!-- SITE-INDEX-END'
 LEADING_H1 = re.compile(r'\A# [^\n]*\n+')
 MD_HREF = re.compile(r'href="([^"#?:]+\.md)((?:#[^"]*)?)"')
+FIGURE = re.compile(r'<p><img src="([^"]+)" alt="([^"]*)" ?/?></p>\s*<p><em>(図\d+-\d+：.*?)</em></p>', re.S)
 HEADING = re.compile(r'<h([23]) id="([^"]+)"[^>]*>(.*?)</h\1>', re.S)
 TABLE = re.compile(r'<div class="table-scroll">(<table.*?</table>)</div>', re.S)
 ROW = re.compile(r'<tr([^>]*)>(.*?)</tr>', re.S)
@@ -57,13 +59,27 @@ def wrap_tables(output: str) -> str:
     return output.replace('<table', '<div class="table-scroll"><table').replace('</table>', '</table></div>')
 
 
+def wrap_figures(output: str) -> str:
+    """画像と直後の「図N-k：」キャプションを <figure> にまとめる。図はクリックで原寸を開ける。"""
+    def repl(m: re.Match) -> str:
+        src, alt, caption = m.groups()
+        return (f'<figure><div class="figure-scroll"><a class="figure-link" href="{src}" title="図を原寸で開く">'
+                f'<img src="{src}" alt="{alt}"></a></div><figcaption>{caption}</figcaption></figure>')
+    return FIGURE.sub(repl, output)
+
+
+def relocate_assets(output: str) -> str:
+    """サイトのトップにある全文ページでは、原稿からの相対パス ../assets/ を assets/ に直す。"""
+    return output.replace('"../assets/', '"assets/')
+
+
 def render(text: str, *, drop_series_title: bool = False, shift: int = 0, prefix: str = '') -> str:
     if drop_series_title:
         text = LEADING_H1.sub('', text, count=1)
     args = ['--from', READER, '--to', 'html5', '--wrap=none', f'--shift-heading-level-by={shift}']
     if prefix:
         args += ['--id-prefix', prefix]
-    return wrap_tables(map_md_links(run_pandoc(text, args)))
+    return wrap_figures(wrap_tables(map_md_links(run_pandoc(text, args))))
 
 
 def localize_chapter_links(output: str, chapters: list[dict]) -> str:
@@ -218,6 +234,7 @@ def build(out: Path) -> list[Path]:
         shutil.rmtree(out)
     (out / 'assets').mkdir(parents=True)
     shutil.copyfile(STYLES, out / 'assets' / 'styles.css')
+    shutil.copytree(ILLUSTRATIONS, out / 'assets' / 'illustrations')
     (out / '.nojekyll').write_text('', encoding='utf-8')
     written: list[Path] = []
     log_page = series['log'][:-3] + '.html'
@@ -245,7 +262,7 @@ def build(out: Path) -> list[Path]:
     for c in chapters:
         source = (ROOT / c['path']).read_text(encoding='utf-8')
         prefix = f'ch{c["number"]}-'
-        article = decorate_chapter(localize_chapter_links(render(source, drop_series_title=True, prefix=prefix), chapters),
+        article = decorate_chapter(relocate_assets(localize_chapter_links(render(source, drop_series_title=True, prefix=prefix), chapters)),
                                    c, title_tag='h2', section_level=3)
         title_id = HEADING.search(article).group(2)
         sections.append(f'<article class="chapter">\n{article}</article>')

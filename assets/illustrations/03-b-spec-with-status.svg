@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="730" viewBox="0 0 1200 730" role="img" aria-labelledby="title desc">
+<title id="title">仕様の各項目に、出所と区分を付ける</title>
+<desc id="desc">原典にない項目は、補わずに「未定義」として残す</desc>
+<defs><marker id="arrow-2b5f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2b5f9e" stroke-width="1.4"/></marker></defs>
+<rect width="1200" height="730" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     03     図3-2</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">仕様の各項目に、出所と区分を付ける</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">原典にない項目は、補わずに「未定義」として残す</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1079.0" y="34.0" width="71.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1114.5" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">設計案</text>
+<text x="50.0" y="214.0" fill="#232a33" font-size="20" text-anchor="start" font-weight="700">仕様の6項目</text>
+<rect x="50.0" y="228.0" width="380.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="70.0" y="256.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">目的</text>
+<text x="70.0" y="279.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">何を解決するか</text>
+<rect x="50.0" y="302.0" width="380.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="70.0" y="330.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">入力</text>
+<text x="70.0" y="353.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">どのような情報を受け取るか</text>
+<rect x="50.0" y="376.0" width="380.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="70.0" y="404.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">出力</text>
+<text x="70.0" y="427.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">どのような結果を生成するか</text>
+<rect x="50.0" y="450.0" width="380.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="70.0" y="478.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">処理原理</text>
+<text x="70.0" y="501.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">どの関係や規則に基づいて動くか</text>
+<rect x="50.0" y="524.0" width="380.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="70.0" y="552.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">制約条件</text>
+<text x="70.0" y="575.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">何を満たし、何を避けるべきか</text>
+<rect x="50.0" y="598.0" width="380.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="70.0" y="626.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">評価条件</text>
+<text x="70.0" y="649.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">なにをもって正しく動いたと判断するか</text>
+<line x1="430.0" y1="448.0" x2="500.0" y2="448.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="500.0" y="228.0" width="650.0" height="438.0" rx="16" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="524.0" y="262.0" fill="#232a33" font-size="20" text-anchor="start" font-weight="700">各項目に付ける記録</text>
+<rect x="524.0" y="282.0" width="602.0" height="90.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="544.0" y="314.0" fill="#2b5f9e" font-size="19" text-anchor="start" font-weight="700">原文の位置</text>
+<text x="544.0" y="346.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">節・段落・ページなど、原典のどこに基づくか</text>
+<rect x="524.0" y="388.0" width="602.0" height="142.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="544.0" y="420.0" fill="#2b5f9e" font-size="19" text-anchor="start" font-weight="700">区分</text>
+<rect x="544.0" y="432.0" width="86.0" height="26.0" rx="13" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="587.0" y="450.2" fill="#2b5f9e" font-size="15" text-anchor="middle" font-weight="700">確認済み</text>
+<text x="654.0" y="451.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">原典に明記されている</text>
+<rect x="544.0" y="464.0" width="56.0" height="26.0" rx="13" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="572.0" y="482.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">推定</text>
+<text x="654.0" y="483.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">文脈や他の文献から導いた</text>
+<rect x="544.0" y="496.0" width="71.0" height="26.0" rx="13" fill="#ffffff" stroke="#5d6873" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="579.5" y="514.2" fill="#5d6873" font-size="15" text-anchor="middle" font-weight="700">未定義</text>
+<text x="654.0" y="515.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">原典に定義がない</text>
+<rect x="524.0" y="546.0" width="602.0" height="100.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="544.0" y="578.0" fill="#c7792b" font-size="19" text-anchor="start" font-weight="700">補完の扱い</text>
+<text x="544.0" y="608.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">原典にない項目は、未定義として残すか、現代の実装者の</text>
+<text x="544.0" y="630.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">仮説として補完する。両者は区別して書く。</text>
+<text x="50.0" y="702.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">何が定義され、何が未定義なのかを明らかにする。</text>
+</g>
+</svg>

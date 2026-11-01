@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img" aria-labelledby="title desc">
+<title id="title">原典・後続・筆者の解釈を分けて読む</title>
+<desc id="desc">エンゲルバートとアレグザンダーを、三つの区分で並べる</desc>
+<defs></defs>
+<rect width="1200" height="740" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     02     図2-3</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">原典・後続・筆者の解釈を分けて読む</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">エンゲルバートとアレグザンダーを、三つの区分で並べる</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="215.0" y="196.0" width="300.0" height="62.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="365.0" y="224.0" fill="#2b5f9e" font-size="19" text-anchor="middle" font-weight="700">原典が明示したこと</text>
+<text x="365.0" y="246.0" fill="#5d6873" font-size="14" text-anchor="middle" font-weight="400">著者自身の記述</text>
+<rect x="530.0" y="196.0" width="300.0" height="62.0" rx="12" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<text x="680.0" y="224.0" fill="#2f8f83" font-size="19" text-anchor="middle" font-weight="700">実現・継承されたこと</text>
+<text x="680.0" y="246.0" fill="#5d6873" font-size="14" text-anchor="middle" font-weight="400">実装と後続の研究</text>
+<rect x="845.0" y="196.0" width="300.0" height="62.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="995.0" y="224.0" fill="#c7792b" font-size="19" text-anchor="middle" font-weight="700">筆者の解釈・仮説</text>
+<text x="995.0" y="246.0" fill="#5d6873" font-size="14" text-anchor="middle" font-weight="400">検証すべき仮説</text>
+<rect x="50.0" y="270.0" width="150.0" height="180.0" rx="12" fill="#ece9e0" stroke="#d8d4c8" stroke-width="2"/>
+<text x="125.0" y="356.0" fill="#232a33" font-size="18" text-anchor="middle" font-weight="700">エンゲルバート</text>
+<text x="125.0" y="382.0" fill="#5d6873" font-size="14" text-anchor="middle" font-weight="400">1962・1968</text>
+<rect x="215.0" y="270.0" width="300.0" height="180.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="231.0" y="304.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">H-LAM/T：人間・言語・</text>
+<text x="231.0" y="327.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">人工物・方法論・訓練</text>
+<text x="231.0" y="350.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">を一つの系として捉える。</text>
+<text x="231.0" y="373.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">研究集団が、自分たちの</text>
+<text x="231.0" y="396.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">道具をまず自分たちで</text>
+<text x="231.0" y="419.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">開発することを勧めた。</text>
+<rect x="530.0" y="270.0" width="300.0" height="180.0" rx="12" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<text x="546.0" y="304.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">NLSは、研究グループの</text>
+<text x="546.0" y="327.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">実験環境で動作した。</text>
+<text x="546.0" y="350.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">対話的な操作や共同作業は</text>
+<text x="546.0" y="373.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">後に普及したが、NLSの</text>
+<text x="546.0" y="396.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">直接の影響だけでは</text>
+<text x="546.0" y="419.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">説明できない。</text>
+<rect x="845.0" y="270.0" width="300.0" height="180.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="861.0" y="304.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">人間とAIの知的作業</text>
+<text x="861.0" y="327.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">システム自体を継続的</text>
+<text x="861.0" y="350.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">に改善するAI。</text>
+<text x="861.0" y="373.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">既に研究や実装があり、</text>
+<text x="861.0" y="396.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">未実現とは断定できない。</text>
+<text x="861.0" y="419.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">原典の構想で再調査する。</text>
+<rect x="50.0" y="470.0" width="150.0" height="180.0" rx="12" fill="#ece9e0" stroke="#d8d4c8" stroke-width="2"/>
+<text x="125.0" y="556.0" fill="#232a33" font-size="18" text-anchor="middle" font-weight="700">アレグザンダー</text>
+<text x="125.0" y="582.0" fill="#5d6873" font-size="14" text-anchor="middle" font-weight="400">1964・2023</text>
+<rect x="215.0" y="470.0" width="300.0" height="180.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="231.0" y="504.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">要求を満たせていない</text>
+<text x="231.0" y="527.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">状態をmisfitとして</text>
+<text x="231.0" y="550.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">捉え、変数と相互作用</text>
+<text x="231.0" y="573.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">の分析で、複雑な設計</text>
+<text x="231.0" y="596.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">問題を分解しようと</text>
+<text x="231.0" y="619.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">した。</text>
+<rect x="530.0" y="470.0" width="300.0" height="180.0" rx="12" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<text x="546.0" y="504.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">パターンの考え方は</text>
+<text x="546.0" y="527.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">ソフトウェアで広く</text>
+<text x="546.0" y="550.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">受け入れられたが、それ</text>
+<text x="546.0" y="573.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">は後期の系譜である。</text>
+<text x="546.0" y="596.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">Gabriel（2023）は初期</text>
+<text x="546.0" y="619.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">の方法を再現できず。</text>
+<rect x="845.0" y="470.0" width="300.0" height="180.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="861.0" y="504.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">要求間の関係を生成AI</text>
+<text x="861.0" y="527.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">で抽出し、グラフ分割</text>
+<text x="861.0" y="550.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">から設計候補を得て、</text>
+<text x="861.0" y="573.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">結合度などで評価する。</text>
+<text x="861.0" y="596.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">検証はこれからである。</text>
+<text x="50.0" y="712.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">一つの語りに、原典・後続・筆者の解釈が混ざらないようにする。</text>
+</g>
+</svg>

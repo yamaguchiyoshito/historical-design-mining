@@ -15,6 +15,7 @@ gh auth status
 ## 公開前の確認
 
 ```sh
+python3 scripts/draw_figures.py
 python3 scripts/validate.py
 python3 -m unittest discover -s tests
 python3 scripts/build.py
