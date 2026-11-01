@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200" role="img" aria-labelledby="title desc">
+<title id="title">天秤</title>
+<desc id="desc">片方の皿に材料の粒が載り、もう片方の皿は空の天秤</desc>
+<defs></defs>
+<path d="M 190 170 L 290 170" fill="none" stroke="#8b8374" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 240 170 L 240 70" fill="none" stroke="#8b8374" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 150 92 L 330 68" fill="none" stroke="#8b8374" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="240.0" cy="80.0" r="6" fill="#8b8374"/>
+<path d="M 150 92 L 100 132" fill="none" stroke="#8b8374" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 150 92 L 200 132" fill="none" stroke="#8b8374" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 330 68 L 280 108" fill="none" stroke="#8b8374" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 330 68 L 380 108" fill="none" stroke="#8b8374" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+<path d="M 96 132 Q 150 160 204 132" fill="none" stroke="#8b8374" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 276 108 Q 330 136 384 108" fill="none" stroke="#8b8374" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="128.0" cy="140.0" r="6" fill="#c7792b"/>
+<circle cx="150.0" cy="144.0" r="6" fill="#c7792b"/>
+<circle cx="172.0" cy="140.0" r="6" fill="#c7792b"/>
+</svg>

@@ -10,7 +10,7 @@ import draw_figures  # noqa: E402
 from build import (annotate_log_tables, build, load_series, localize_chapter_links, map_md_links, relocate_assets,  # noqa: E402
                    mark_key_statements, row_kinds, section_toc, site_index_text, status_note, wrap_figures, wrap_tables)
 from check_html import check  # noqa: E402
-from validate import BARE_URL, Result, check_figures, headings, svg_errors, validate  # noqa: E402
+from validate import BARE_URL, Result, check_figures, check_vignettes, headings, svg_errors, validate  # noqa: E402
 
 
 class RepositoryTests(unittest.TestCase):
@@ -218,22 +218,30 @@ class FigureTests(unittest.TestCase):
     def test_figures_match_series_and_chapter_text(self):
         result, errors = validate()
         self.assertEqual(errors, [])
-        expected = sum(len(c.get('figures', [])) for c in load_series()['chapters'])
-        self.assertEqual((result.figures, result.svg_files), (expected, expected + 1))  # 表紙は回に属さない
+        chapters = load_series()['chapters']
+        expected = sum(len(c.get('figures', [])) for c in chapters)
+        vignettes = sum(len(c.get('vignettes', [])) for c in chapters)
+        self.assertEqual((result.figures, result.vignettes), (expected, vignettes))
+        self.assertEqual(result.svg_files, expected + 1 + vignettes)  # 表紙は回に属さない
 
     def test_committed_svgs_are_what_the_generator_produces(self):
         """SVGを直接編集すると、次の再生成で上書きされる。生成コードと成果物のずれを検出する。"""
-        original = draw_figures.OUT
-        with tempfile.TemporaryDirectory() as tmp:
+        original, original_vignettes = draw_figures.OUT, draw_figures.VIGNETTE_OUT
+        with tempfile.TemporaryDirectory() as tmp, tempfile.TemporaryDirectory() as tmp_vignettes:
             try:
-                draw_figures.OUT = Path(tmp)
+                draw_figures.OUT, draw_figures.VIGNETTE_OUT = Path(tmp), Path(tmp_vignettes)
                 names = [draw() for draw in draw_figures.FIGURES]
+                vignettes = [draw() for draw in draw_figures.VIGNETTES]
             finally:
-                draw_figures.OUT = original
+                draw_figures.OUT, draw_figures.VIGNETTE_OUT = original, original_vignettes
             series = load_series()
             self.assertEqual(names, [Path(series['cover']).name] + [n for c in series['chapters'] for n in c.get('figures', [])])
             for name in names:
                 self.assertEqual((Path(tmp) / name).read_text(encoding='utf-8'), (original / name).read_text(encoding='utf-8'), name)
+            self.assertEqual(vignettes, [n for c in series['chapters'] for n in c.get('vignettes', [])])
+            for name in vignettes:
+                self.assertEqual((Path(tmp_vignettes) / name).read_text(encoding='utf-8'),
+                                 (original_vignettes / name).read_text(encoding='utf-8'), name)
 
     def test_generator_rejects_text_that_does_not_fit(self):
         fig = draw_figures.Figure(9, 'a', 'x', 'タイトル', '副題')
@@ -285,6 +293,40 @@ class FigureTests(unittest.TestCase):
             self.assertEqual(complete.count('<figure>'), sum(len(c['figures']) for c in chapters))
             self.assertNotIn('src="../assets/', complete)
             self.assertNotIn('<img src="http', complete)
+
+    def test_vignettes_are_decorative_and_carry_no_text(self):
+        for c in load_series()['chapters']:
+            for name in c.get('vignettes', []):
+                svg = (ROOT / 'assets' / 'vignettes' / name).read_text(encoding='utf-8')
+                self.assertNotIn('<text', svg, name)
+                self.assertNotIn('<rect width="480" height="200"', svg, name)  # 背景は透明
+
+    def test_built_pages_embed_each_vignette_as_hidden_decoration(self):
+        chapters = load_series()['chapters']
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            for c in chapters:
+                page = (out / 'articles' / f'{Path(c["path"]).stem}.html').read_text(encoding='utf-8')
+                self.assertEqual(page.count('class="vignette" aria-hidden="true"'), len(c['vignettes']))
+                for name in c['vignettes']:
+                    self.assertIn(f'<img src="../assets/vignettes/{name}" alt="">', page)
+                    self.assertTrue((out / 'assets' / 'vignettes' / name).exists())
+                self.assertEqual(page.count('<figcaption>'), len(c['figures']))  # ひとこまにキャプションはない
+            complete = (out / 'complete.html').read_text(encoding='utf-8')
+            self.assertEqual(complete.count('class="vignette"'), sum(len(c['vignettes']) for c in chapters))
+            self.assertNotIn('src="../assets/', complete)
+
+    def test_an_image_without_alt_text_must_be_a_listed_vignette(self):
+        chapter = dict(load_series()['chapters'][0])
+        text = (ROOT / chapter['path']).read_text(encoding='utf-8') + '\n![](../assets/illustrations/01-a-why-not-inherited.svg)\n'
+        errors: list[str] = []
+        check_vignettes(chapter, text, errors, Result())
+        self.assertTrue(any('must be a vignette' in e for e in errors), errors)
+        errors = []
+        chapter['vignettes'] = []
+        check_vignettes(chapter, (ROOT / chapter['path']).read_text(encoding='utf-8'), errors, Result())
+        self.assertTrue(any('must match series.json' in e for e in errors), errors)
 
     def test_index_page_shows_the_cover_without_caption(self):
         with tempfile.TemporaryDirectory() as tmp:

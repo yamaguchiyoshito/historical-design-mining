@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200" role="img" aria-labelledby="title desc">
+<title id="title">古い本と一筋の光</title>
+<desc id="desc">棚から漏れた一冊の古い本に、斜めの光が差している</desc>
+<defs><linearGradient id="grad0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7792b" stop-opacity="0"/><stop offset="1" stop-color="#c7792b" stop-opacity="0.32"/></linearGradient></defs>
+<path d="M 90 166 L 400 166" fill="none" stroke="#8b8374" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+<polygon points="110.0,6.0 176.0,6.0 296.0,128.0 205.0,128.0" fill="url(#grad0)" stroke="none" stroke-width="2" stroke-linejoin="round"/>
+<path d="M 118 12 L 205 128" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+<path d="M 172 12 L 296 128" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+<circle cx="190.0" cy="60.0" r="2.5" fill="#c7792b"/>
+<circle cx="220.0" cy="84.0" r="2.5" fill="#c7792b"/>
+<circle cx="176.0" cy="98.0" r="2.5" fill="#c7792b"/>
+<rect x="185.0" y="128.0" width="150.0" height="38.0" rx="5" fill="none" stroke="#8b8374" stroke-width="3"/>
+<path d="M 200 128 L 200 166" fill="none" stroke="#8b8374" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 214 140 L 335 140" fill="none" stroke="#8b8374" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+<path d="M 214 148 L 335 148" fill="none" stroke="#8b8374" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+<path d="M 214 156 L 335 156" fill="none" stroke="#8b8374" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+</svg>

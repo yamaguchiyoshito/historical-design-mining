@@ -13,11 +13,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SERIES_FILE = ROOT / 'series.json'
 STYLES = ROOT / 'site-src' / 'styles.css'
 ILLUSTRATIONS = ROOT / 'assets' / 'illustrations'
+VIGNETTES = ROOT / 'assets' / 'vignettes'
 READER = 'markdown+pipe_tables+autolink_bare_uris-tex_math_dollars-smart-implicit_figures'
 SITE_INDEX_END = '<!-- SITE-INDEX-END'
 LEADING_H1 = re.compile(r'\A# [^\n]*\n+')
 MD_HREF = re.compile(r'href="([^"#?:]+\.md)((?:#[^"]*)?)"')
 KEY_STATEMENT = re.compile(r'<p><strong>((?:(?!</strong>).)*)</strong></p>', re.S)
+VIGNETTE = re.compile(r'<p><img src="(\.\./assets/vignettes/[^"]+)" ?/?></p>')
 COVER = re.compile(r'<p><img src="(assets/illustrations/[^"]+)" alt="([^"]*)" ?/?></p>')
 FIGURE = re.compile(r'<p><img src="([^"]+)" alt="([^"]*)" ?/?></p>\s*<p><em>(図\d+-\d+：.*?)</em></p>', re.S)
 HEADING = re.compile(r'<h([23]) id="([^"]+)"[^>]*>(.*?)</h\1>', re.S)
@@ -71,7 +73,9 @@ def wrap_figures(output: str) -> str:
         src, alt = m.groups()
         return (f'<figure class="cover"><div class="figure-scroll"><a class="figure-link" href="{src}" title="図を原寸で開く">'
                 f'<img src="{src}" alt="{alt}"></a></div></figure>')
-    return COVER.sub(cover, FIGURE.sub(repl, output))
+    def vignette(m: re.Match) -> str:
+        return f'<div class="vignette" aria-hidden="true"><img src="{m.group(1)}" alt=""></div>'
+    return VIGNETTE.sub(vignette, COVER.sub(cover, FIGURE.sub(repl, output)))
 
 
 def relocate_assets(output: str) -> str:
@@ -275,6 +279,7 @@ def build(out: Path) -> list[Path]:
     (out / 'assets').mkdir(parents=True)
     shutil.copyfile(STYLES, out / 'assets' / 'styles.css')
     shutil.copytree(ILLUSTRATIONS, out / 'assets' / 'illustrations')
+    shutil.copytree(VIGNETTES, out / 'assets' / 'vignettes')
     (out / '.nojekyll').write_text('', encoding='utf-8')
     written: list[Path] = []
     log_page = series['log'][:-3] + '.html'

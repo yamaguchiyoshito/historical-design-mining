@@ -5,6 +5,7 @@
 SVGには viewBox / role="img" / title / desc を持たせ、script・外部参照・フォントファイルは入れない。
 未実施の実験・未実装の設計は、図の中にも「設計案」「例示」「実験計画（未実施）」のバッジを描く。
 比喩として描くイメージ図には「イメージ」のバッジを描き、事実の根拠にしない。
+「ひとこま」（vignette）は、文字を入れない透明背景の小さな線画で、本文の区切りに添える。
 文字の幅は等幅の近似で見積もり、枠や画面からはみ出す文は生成時にエラーにする。
 """
 from __future__ import annotations
@@ -16,6 +17,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets' / 'illustrations'
+VIGNETTE_OUT = ROOT / 'assets' / 'vignettes'
 BG, INK, MUTED, LINE, SOFT = '#f7f5ef', '#232a33', '#5d6873', '#d8d4c8', '#ece9e0'
 BLUE, AMBER, TEAL, PLUM = '#2b5f9e', '#c7792b', '#2f8f83', '#8a4f9e'
 FONT = 'system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'
@@ -131,7 +133,8 @@ class Figure:
         """A linear gradient; returns the url(#id) to use as a fill. stops: (offset, color) pairs."""
         gid = f'grad{len(self.defs)}'
         x2, y2 = ('1', '0') if horizontal else ('0', '1')
-        inner = ''.join(f'<stop offset="{o}" stop-color="{c}"/>' for o, c in stops)
+        inner = ''.join(f'<stop offset="{o}" stop-color="{c}"' + (f' stop-opacity="{a[0]}"' if (a := rest) else '') + '/>'
+                        for o, c, *rest in stops)
         self.defs.append(f'<linearGradient id="{gid}" x1="0" y1="0" x2="{x2}" y2="{y2}">{inner}</linearGradient>')
         return f'url(#{gid})'
 
@@ -237,6 +240,33 @@ class Figure:
                 '<defs>' + ''.join(self.defs) + '</defs>', f'<rect width="{WIDTH}" height="{self.h}" rx="20" fill="{BG}"/>',
                 f'<g font-family=\'{FONT}\'>']
         (OUT / self.name).write_text('\n'.join(head + self.body + ['</g>', '</svg>']) + '\n', encoding='utf-8')
+        return self.name
+
+
+class Vignette(Figure):
+    """文字を入れない、透明背景の小さな線画。番号・キャプション・バッジは持たない。"""
+
+    LINE_COLOR = '#8b8374'  # 明るい背景でも暗い背景でも読める中間の色
+    WIDTH, HEIGHT = 480, 200
+
+    def __init__(self, chapter: int, part: str, slug: str, title: str, desc: str):
+        self.chapter, self.part, self.slug = chapter, part, slug
+        self.index = ord(part) - 96
+        self.h = self.HEIGHT
+        self.title, self.subtitle = title, desc
+        self.defs, self._markers, self.body = [], {}, []
+        self.name = f'{chapter:02d}-{part}-{slug}.svg'
+        self.label = ''
+
+    def stroke(self, d, color=None, width=3, opacity=1.0, dash=False, fill='none'):
+        self.curve(d, color or self.LINE_COLOR, width, opacity, dash, fill=fill)
+
+    def save(self) -> str:
+        VIGNETTE_OUT.mkdir(parents=True, exist_ok=True)
+        head = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.WIDTH}" height="{self.HEIGHT}" viewBox="0 0 {self.WIDTH} {self.HEIGHT}" role="img" aria-labelledby="title desc">',
+                f'<title id="title">{escape(self.title)}</title>', f'<desc id="desc">{escape(self.subtitle)}</desc>',
+                '<defs>' + ''.join(self.defs) + '</defs>']
+        (VIGNETTE_OUT / self.name).write_text('\n'.join(head + self.body + ['</svg>']) + '\n', encoding='utf-8')
         return self.name
 
 
@@ -783,21 +813,99 @@ def fig_4a() -> str:
 
 
 
+# ---------------------------------------------------------------------------
+# ひとこま（文字を入れない小さな線画）
+# ---------------------------------------------------------------------------
+def vig_1a() -> str:
+    v = Vignette(1, 'a', 'forgotten-book', '古い本と一筋の光', '棚から漏れた一冊の古い本に、斜めの光が差している')
+    v.stroke('M 90 166 L 400 166', width=2, opacity=0.5)
+    beam = v.linear([(0, AMBER, 0), (1, AMBER, 0.32)], horizontal=False)
+    v.polygon([(110, 6), (176, 6), (296, 128), (205, 128)], fill=beam)
+    v.stroke('M 118 12 L 205 128', AMBER, 2.5, 0.55)
+    v.stroke('M 172 12 L 296 128', AMBER, 2.5, 0.55)
+    for x, y in [(190, 60), (220, 84), (176, 98)]:
+        v.circ(x, y, 2.5, AMBER)
+    v.rect(185, 128, 150, 38, fill='none', stroke=v.LINE_COLOR, width=3, rx=5)
+    v.stroke('M 200 128 L 200 166', width=3)
+    for y in (140, 148, 156):
+        v.stroke(f'M 214 {y} L 335 {y}', width=2, opacity=0.55)
+    return v.save()
+
+
+def vig_2a() -> str:
+    v = Vignette(2, 'a', 'tangled-thread', '絡まった糸玉', '互いに絡み合った糸玉から、一本の糸がほどけて伸びている')
+    for rot, rx, ry in [(0, 52, 36), (60, 52, 36), (120, 52, 36), (30, 44, 30)]:
+        v.body.append(f'<ellipse cx="190" cy="100" rx="{rx}" ry="{ry}" transform="rotate({rot} 190 100)" fill="none" '
+                      f'stroke="{v.LINE_COLOR}" stroke-width="3" opacity="0.85"/>')
+    v.stroke('M 232 118 C 270 148 300 160 330 140 C 360 120 380 100 420 112', AMBER, 3.5)
+    v.circ(420, 112, 4.5, AMBER)
+    return v.save()
+
+
+def vig_2b() -> str:
+    v = Vignette(2, 'b', 'misaligned-sheets', 'ずれた二枚の紙', '同じ形の二枚の紙が、少しずれて重なっている')
+    v.rect(150, 40, 170, 116, fill='none', stroke=v.LINE_COLOR, width=3, rx=4)
+    for y in (68, 86, 104):
+        v.stroke(f'M 168 {y} L 300 {y}', width=2, opacity=0.5)
+    v.rect(166, 52, 170, 116, fill='none', stroke=AMBER, width=3, rx=4, dash=True)
+    for y in (80, 98, 116):
+        v.curve(f'M 184 {y} L 316 {y}', AMBER, 2, 0.5)
+    return v.save()
+
+
+def vig_3a() -> str:
+    v = Vignette(3, 'a', 'balance', '天秤', '片方の皿に材料の粒が載り、もう片方の皿は空の天秤')
+    v.stroke('M 190 170 L 290 170')
+    v.stroke('M 240 170 L 240 70')
+    v.stroke('M 150 92 L 330 68', width=3.5)
+    v.circ(240, 80, 6, v.LINE_COLOR)
+    for x0, y0, x1 in [(150, 92, 100), (150, 92, 200)]:
+        v.stroke(f'M {x0} {y0} L {x1} 132', width=1.8, opacity=0.7)
+    for x0, y0, x1 in [(330, 68, 280), (330, 68, 380)]:
+        v.stroke(f'M {x0} {y0} L {x1} 108', width=1.8, opacity=0.7)
+    v.stroke('M 96 132 Q 150 160 204 132', width=3)
+    v.stroke('M 276 108 Q 330 136 384 108', width=3)
+    for x, y in [(128, 140), (150, 144), (172, 140)]:
+        v.circ(x, y, 6, AMBER)
+    return v.save()
+
+
+def vig_4a() -> str:
+    v = Vignette(4, 'a', 'dry-riverbed', '乾いた川床に戻る水', 'ひび割れた乾いた川床に、細い水の線が一筋戻ってくる')
+    v.stroke('M 40 66 C 140 44 260 88 440 56', width=3)
+    v.stroke('M 40 146 C 140 124 260 168 440 134', width=3)
+    for d in ['M 270 76 L 282 98 L 268 116 L 280 140', 'M 350 70 L 340 94 L 358 112 L 346 132', 'M 410 64 L 400 86 L 416 108',
+              'M 282 98 L 304 104', 'M 340 94 L 318 100', 'M 358 112 L 380 118']:
+        v.stroke(d, width=2, opacity=0.65)
+    v.stroke('M 40 108 C 90 98 130 116 180 104 C 200 99 214 100 226 104', '#5b86b8', 5.5)
+    v.ellipse(236, 105, 9, 4, stroke='#5b86b8', width=2.5, opacity=0.8)
+    v.ellipse(236, 105, 19, 8, stroke='#5b86b8', width=2, opacity=0.45)
+    return v.save()
+
+
+
 FIGURES = [fig_cover, fig_1a, fig_1b, fig_1c, fig_2a, fig_2b, fig_2c, fig_2d, fig_2e,
            fig_3a, fig_3b, fig_3c, fig_3d, fig_4a, fig_4b, fig_4c, fig_4d]
 
 
+VIGNETTES = [vig_1a, vig_2a, vig_2b, vig_3a, vig_4a]
+
+
 def main() -> int:
     names = [draw() for draw in FIGURES]
+    vignettes = [draw() for draw in VIGNETTES]
     series = json.loads((ROOT / 'series.json').read_text(encoding='utf-8'))
     listed = [Path(series['cover']).name] + [name for c in series['chapters'] for name in c.get('figures', [])]
     problems = []
     if listed != names:
         problems.append(f'series.json の figures と生成した図が一致しない: 生成={names} / 登録={listed}')
+    if [n for c in series['chapters'] for n in c.get('vignettes', [])] != vignettes:
+        problems.append(f'series.json の vignettes と生成したひとこまが一致しない: 生成={vignettes}')
+    problems += [f'生成対象に含まれないひとこまがある: {p.name}' for p in VIGNETTE_OUT.glob('*.svg') if p.name not in vignettes]
     stray = sorted(p.name for p in OUT.glob('*.svg') if p.name not in names)
     if stray:
         problems.append(f'生成対象に含まれないSVGがある: {stray}')
-    print(json.dumps({'generated': len(names), 'problems': problems}, ensure_ascii=False, indent=2))
+    print(json.dumps({'generated': len(names), 'vignettes': len(vignettes), 'problems': problems}, ensure_ascii=False, indent=2))
     return 1 if problems else 0
 
 

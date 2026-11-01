@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200" role="img" aria-labelledby="title desc">
+<title id="title">ずれた二枚の紙</title>
+<desc id="desc">同じ形の二枚の紙が、少しずれて重なっている</desc>
+<defs></defs>
+<rect x="150.0" y="40.0" width="170.0" height="116.0" rx="4" fill="none" stroke="#8b8374" stroke-width="3"/>
+<path d="M 168 68 L 300 68" fill="none" stroke="#8b8374" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+<path d="M 168 86 L 300 86" fill="none" stroke="#8b8374" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+<path d="M 168 104 L 300 104" fill="none" stroke="#8b8374" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+<rect x="166.0" y="52.0" width="170.0" height="116.0" rx="4" fill="none" stroke="#c7792b" stroke-width="3" stroke-dasharray="8 7"/>
+<path d="M 184 80 L 316 80" fill="none" stroke="#c7792b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+<path d="M 184 98 L 316 98" fill="none" stroke="#c7792b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+<path d="M 184 116 L 316 116" fill="none" stroke="#c7792b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+</svg>
