@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+<title id="title">再現と拡張は、入れる水が違う</title>
+<desc id="desc">器は問題設定と設計原理、水は実現手段</desc>
+<defs><linearGradient id="grad0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient><linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient><marker id="arrow-2b5f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2b5f9e" stroke-width="1.4"/></marker></defs>
+<rect width="1200" height="680" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     04     図4-1</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">再現と拡張は、入れる水が違う</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">器は問題設定と設計原理、水は実現手段</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1064.0" y="34.0" width="86.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1107.0" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">イメージ</text>
+<rect x="50.0" y="196.0" width="540.0" height="420.0" rx="16" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="610.0" y="196.0" width="540.0" height="420.0" rx="16" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="8 7"/>
+<ellipse cx="320.0" cy="496.0" rx="82.0" ry="9.0" fill="#232a33" stroke="none" stroke-width="2" opacity="0.08"/>
+<path d="M 248 300 C 248 334.2 212 347.5 212 404.5 C 212 461.5 252 490 260 490 L 380 490 C 388 490 428 461.5 428 404.5 C 428 347.5 392 334.2 392 300 Z" fill="url(#grad0)" stroke="#a8793f" stroke-width="2.5" stroke-linejoin="round"/>
+<ellipse cx="320.0" cy="300.0" rx="72.0" ry="17.3" fill="#c9a46a" stroke="#a8793f" stroke-width="2.5"/>
+<ellipse cx="298.4" cy="297.4" rx="23.0" ry="5.5" fill="#ffffff" stroke="none" stroke-width="2" opacity="0.35"/>
+<path d="M 275.4 315.6 L 280.4 324.7 L 263.8 338.0 L 233.6 360.8 L 244.4 379.8" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<path d="M 356.0 316.4 L 361.8 319.0 L 348.8 338.0 L 374.0 357.0 L 363.2 376.0" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<ellipse cx="880.0" cy="496.0" rx="82.0" ry="9.0" fill="#232a33" stroke="none" stroke-width="2" opacity="0.08"/>
+<path d="M 808 300 C 808 334.2 772 347.5 772 404.5 C 772 461.5 812 490 820 490 L 940 490 C 948 490 988 461.5 988 404.5 C 988 347.5 952 334.2 952 300 Z" fill="url(#grad1)" stroke="#a8793f" stroke-width="2.5" stroke-linejoin="round"/>
+<ellipse cx="880.0" cy="300.0" rx="72.0" ry="17.3" fill="#7fa6d6" stroke="#a8793f" stroke-width="2.5"/>
+<ellipse cx="858.4" cy="297.4" rx="23.0" ry="5.5" fill="#ffffff" stroke="none" stroke-width="2" opacity="0.35"/>
+<path d="M 835.4 315.6 L 840.4 324.7 L 823.8 338.0 L 793.6 360.8 L 804.4 379.8" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<path d="M 916.0 316.4 L 921.8 319.0 L 908.8 338.0 L 934.0 357.0 L 923.2 376.0" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<ellipse cx="325.0" cy="301.0" rx="46.0" ry="10.0" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+<ellipse cx="882.0" cy="301.0" rx="48.0" ry="11.0" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+<path d="M 990 214 C 940 214 900 240 886 292" fill="none" stroke="#2b5f9e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+<path d="M 990 214 C 940 214 900 240 886 292" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<line x1="442.0" y1="400.0" x2="758.0" y2="400.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)" marker-start="url(#arrow-2b5f9e)"/>
+<text x="600.0" y="380.0" fill="#2b5f9e" font-size="20" text-anchor="middle" font-weight="700">同じ器</text>
+<text x="600.0" y="430.0" fill="#5d6873" font-size="15" text-anchor="middle" font-weight="400">問題設定と設計原理を保つ</text>
+<text x="320.0" y="540.0" fill="#c7792b" font-size="22" text-anchor="middle" font-weight="700">忠実な再現</text>
+<text x="320.0" y="568.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="400">水（実現手段）も当時のまま。</text>
+<text x="320.0" y="590.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="400">過去の仮説を検証する。</text>
+<text x="880.0" y="540.0" fill="#2b5f9e" font-size="22" text-anchor="middle" font-weight="700">現代的な拡張</text>
+<text x="880.0" y="568.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="400">水（実現手段）を現代のものに替える。</text>
+<text x="880.0" y="590.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="400">過去の仮説から新しい仮説を生む。</text>
+<text x="50.0" y="652.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">水を替えると、検証する仮説が変わる。</text>
+</g>
+</svg>

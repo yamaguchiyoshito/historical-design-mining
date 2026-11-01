@@ -17,6 +17,7 @@ READER = 'markdown+pipe_tables+autolink_bare_uris-tex_math_dollars-smart-implici
 SITE_INDEX_END = '<!-- SITE-INDEX-END'
 LEADING_H1 = re.compile(r'\A# [^\n]*\n+')
 MD_HREF = re.compile(r'href="([^"#?:]+\.md)((?:#[^"]*)?)"')
+COVER = re.compile(r'<p><img src="(assets/illustrations/[^"]+)" alt="([^"]*)" ?/?></p>')
 FIGURE = re.compile(r'<p><img src="([^"]+)" alt="([^"]*)" ?/?></p>\s*<p><em>(図\d+-\d+：.*?)</em></p>', re.S)
 HEADING = re.compile(r'<h([23]) id="([^"]+)"[^>]*>(.*?)</h\1>', re.S)
 TABLE = re.compile(r'<div class="table-scroll">(<table.*?</table>)</div>', re.S)
@@ -65,7 +66,11 @@ def wrap_figures(output: str) -> str:
         src, alt, caption = m.groups()
         return (f'<figure><div class="figure-scroll"><a class="figure-link" href="{src}" title="図を原寸で開く">'
                 f'<img src="{src}" alt="{alt}"></a></div><figcaption>{caption}</figcaption></figure>')
-    return FIGURE.sub(repl, output)
+    def cover(m: re.Match) -> str:
+        src, alt = m.groups()
+        return (f'<figure class="cover"><div class="figure-scroll"><a class="figure-link" href="{src}" title="図を原寸で開く">'
+                f'<img src="{src}" alt="{alt}"></a></div></figure>')
+    return COVER.sub(cover, FIGURE.sub(repl, output))
 
 
 def relocate_assets(output: str) -> str:

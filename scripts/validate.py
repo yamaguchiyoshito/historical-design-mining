@@ -169,13 +169,18 @@ def validate() -> tuple[Result, list[str]]:
         check_figures(c, text, errors, result)
 
     listed = {name for c in chapters for name in c.get('figures', [])}
+    cover = series.get('cover', '')
+    if cover:
+        if Path(cover).parent.as_posix() != FIGURE_DIR:
+            errors.append(f'series.json: cover must be in {FIGURE_DIR}/')
+        listed.add(Path(cover).name)
     figure_dir = ROOT / FIGURE_DIR
     found = {p.name for p in figure_dir.glob('*.svg')} if figure_dir.exists() else set()
     for name in sorted(listed - found):
         errors.append(f'{FIGURE_DIR}/{name}: listed in series.json but missing')
     for name in sorted(found - listed):
         errors.append(f'{FIGURE_DIR}/{name}: not listed in series.json')
-    if sum(len(c.get('figures', [])) for c in chapters) != len(listed):
+    if sum(len(c.get('figures', [])) for c in chapters) + (1 if cover else 0) != len(listed):
         errors.append('series.json: a figure is listed more than once')
     for name in sorted(found & listed):
         result.svg_files += 1
@@ -193,6 +198,8 @@ def validate() -> tuple[Result, list[str]]:
     for c in chapters:
         if f']({c["path"]})' not in head:
             errors.append(f'README.md: site index does not link {c["path"]}')
+    if cover and not re.search(rf'^!\[[^\]]+\]\({re.escape(cover)}\)\s*$', head, re.M):
+        errors.append(f'README.md: the site index must show the cover {cover} with alt text')
     if f']({series["log"]})' in head:
         errors.append('README.md: the site index must not link the verification log')
     if f']({series["log"]})' not in index_text:

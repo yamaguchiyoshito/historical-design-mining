@@ -164,7 +164,7 @@ class FigureTests(unittest.TestCase):
         result, errors = validate()
         self.assertEqual(errors, [])
         expected = sum(len(c.get('figures', [])) for c in load_series()['chapters'])
-        self.assertEqual((result.figures, result.svg_files), (expected, expected))
+        self.assertEqual((result.figures, result.svg_files), (expected, expected + 1))  # 表紙は回に属さない
 
     def test_committed_svgs_are_what_the_generator_produces(self):
         """SVGを直接編集すると、次の再生成で上書きされる。生成コードと成果物のずれを検出する。"""
@@ -175,7 +175,8 @@ class FigureTests(unittest.TestCase):
                 names = [draw() for draw in draw_figures.FIGURES]
             finally:
                 draw_figures.OUT = original
-            self.assertEqual(names, [n for c in load_series()['chapters'] for n in c.get('figures', [])])
+            series = load_series()
+            self.assertEqual(names, [Path(series['cover']).name] + [n for c in series['chapters'] for n in c.get('figures', [])])
             for name in names:
                 self.assertEqual((Path(tmp) / name).read_text(encoding='utf-8'), (original / name).read_text(encoding='utf-8'), name)
 
@@ -229,6 +230,26 @@ class FigureTests(unittest.TestCase):
             self.assertEqual(complete.count('<figure>'), sum(len(c['figures']) for c in chapters))
             self.assertNotIn('src="../assets/', complete)
             self.assertNotIn('<img src="http', complete)
+
+    def test_index_page_shows_the_cover_without_caption(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            index = (out / 'index.html').read_text(encoding='utf-8')
+            self.assertIn('<figure class="cover">', index)
+            self.assertIn('src="assets/illustrations/00-cover.svg"', index)
+            self.assertNotIn('<figcaption>', index)
+            self.assertTrue((out / 'assets' / 'illustrations' / '00-cover.svg').exists())
+
+    def test_concept_images_are_labelled_and_never_figures_of_fact(self):
+        """比喩のイメージ図は、図の中のバッジと、キャプションの「（イメージ）」で区別する。"""
+        for c in load_series()['chapters']:
+            text = (ROOT / c['path']).read_text(encoding='utf-8')
+            captions = dict(re.findall(r'^\*図(\d+-\d+)：(.+)\*$', text, re.M))
+            for index, name in enumerate(c['figures'], 1):
+                svg = (ROOT / 'assets' / 'illustrations' / name).read_text(encoding='utf-8')
+                badge = '>イメージ</text>' in svg
+                self.assertEqual(captions[f'{c["number"]}-{index}'].startswith('（イメージ）'), badge, name)
 
     def test_figure_references_that_disagree_with_series_json_are_reported(self):
         chapter = dict(load_series()['chapters'][0])
