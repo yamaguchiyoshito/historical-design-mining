@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+<title id="title">古い器に新しい水を入れる</title>
+<desc id="desc">過去の知を発掘し、AIエージェントによって再実装する、全4回</desc>
+<defs><linearGradient id="grad0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient></defs>
+<rect width="1200" height="660" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">古い器に新しい水を入れる</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">過去の知を発掘し、AIエージェントによって再実装する、全4回</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<line x1="640" y1="196" x2="640" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="680" y1="196" x2="680" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="720" y1="196" x2="720" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="760" y1="196" x2="760" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="800" y1="196" x2="800" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="840" y1="196" x2="840" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="880" y1="196" x2="880" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="920" y1="196" x2="920" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="960" y1="196" x2="960" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="1000" y1="196" x2="1000" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="1040" y1="196" x2="1040" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="1080" y1="196" x2="1080" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="1120" y1="196" x2="1120" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="196" x2="1150" y2="196" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="236" x2="1150" y2="236" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="276" x2="1150" y2="276" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="316" x2="1150" y2="316" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="356" x2="1150" y2="356" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="396" x2="1150" y2="396" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="436" x2="1150" y2="436" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="476" x2="1150" y2="476" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="516" x2="1150" y2="516" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="556" x2="1150" y2="556" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<line x1="640" y1="596" x2="1150" y2="596" stroke="#2b5f9e" stroke-width="1" opacity="0.08"/>
+<ellipse cx="400.0" cy="586.0" rx="98.0" ry="9.0" fill="#232a33" stroke="none" stroke-width="2" opacity="0.08"/>
+<path d="M 305 340 C 305 383.2 260 400.0 260 472.0 C 260 544.0 316 580 324 580 L 476 580 C 484 580 540 544.0 540 472.0 C 540 400.0 495 383.2 495 340 Z" fill="url(#grad0)" stroke="#a8793f" stroke-width="2.5" stroke-linejoin="round"/>
+<ellipse cx="400.0" cy="340.0" rx="95.0" ry="22.8" fill="#7fa6d6" stroke="#a8793f" stroke-width="2.5"/>
+<ellipse cx="371.5" cy="336.6" rx="30.4" ry="7.3" fill="#ffffff" stroke="none" stroke-width="2" opacity="0.35"/>
+<path d="M 341.1 360.5 L 347.8 371.2 L 325.9 388.0 L 288.0 416.8 L 302.0 440.8" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<path d="M 447.5 361.7 L 455.1 364.0 L 438.0 388.0 L 470.0 412.0 L 456.0 436.0" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<ellipse cx="390.0" cy="344.0" rx="46.0" ry="9.2" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+<ellipse cx="396.0" cy="346.0" rx="62.0" ry="12.4" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+<path d="M 960 210 C 820 204 600 220 440 336" fill="none" stroke="#2b5f9e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+<path d="M 960 210 C 820 204 600 220 440 336" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<circle cx="690.0" cy="400.0" r="16" fill="#2b5f9e"/>
+<text x="690.0" y="406.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">1</text>
+<text x="724.0" y="407.0" fill="#232a33" font-size="21" text-anchor="start" font-weight="700">なぜ</text>
+<circle cx="690.0" cy="450.0" r="16" fill="#2b5f9e"/>
+<text x="690.0" y="456.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">2</text>
+<text x="724.0" y="457.0" fill="#232a33" font-size="21" text-anchor="start" font-weight="700">何を</text>
+<circle cx="690.0" cy="500.0" r="16" fill="#2b5f9e"/>
+<text x="690.0" y="506.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">3</text>
+<text x="724.0" y="507.0" fill="#232a33" font-size="21" text-anchor="start" font-weight="700">どう発掘する</text>
+<circle cx="690.0" cy="550.0" r="16" fill="#2b5f9e"/>
+<text x="690.0" y="556.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">4</text>
+<text x="724.0" y="557.0" fill="#232a33" font-size="21" text-anchor="start" font-weight="700">どう検証する</text>
+<text x="50.0" y="632.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">過去の文章は、未来の設計書かもしれない。</text>
+</g>
+</svg>

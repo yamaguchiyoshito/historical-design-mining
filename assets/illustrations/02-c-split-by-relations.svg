@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">分け方は、関係から導く</title>
+<desc id="desc">あらかじめ決めた分類で切るのと、結びつきから分け方を見つけるのと</desc>
+<defs></defs>
+<rect width="1200" height="700" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     02     図2-3</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">分け方は、関係から導く</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">あらかじめ決めた分類で切るのと、結びつきから分け方を見つけるのと</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1064.0" y="34.0" width="86.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1107.0" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">イメージ</text>
+<rect x="50.0" y="196.0" width="540.0" height="410.0" rx="16" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="320.0" y="232.0" fill="#232a33" font-size="20" text-anchor="middle" font-weight="700">あらかじめ決めた分類で切る</text>
+<line x1="140.0" y1="336.0" x2="200.0" y2="326.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="200.0" y1="326.0" x2="220.0" y2="381.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="140.0" y1="336.0" x2="170.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="170.0" y1="386.0" x2="220.0" y2="381.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="200.0" y1="326.0" x2="170.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="400.0" y1="336.0" x2="460.0" y2="316.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="460.0" y1="316.0" x2="490.0" y2="376.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="490.0" y1="376.0" x2="430.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="400.0" y1="336.0" x2="430.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="460.0" y1="316.0" x2="430.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="270.0" y1="486.0" x2="330.0" y2="476.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="330.0" y1="476.0" x2="360.0" y2="531.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="270.0" y1="486.0" x2="300.0" y2="536.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="300.0" y1="536.0" x2="360.0" y2="531.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="330.0" y1="476.0" x2="300.0" y2="536.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="220.0" y1="381.0" x2="270.0" y2="486.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="430.0" y1="386.0" x2="330.0" y2="476.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="200.0" y1="326.0" x2="400.0" y2="336.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="320.0" y1="266.0" x2="320.0" y2="561.0" stroke="#c7792b" stroke-width="2.5" stroke-dasharray="8 7"/>
+<line x1="90.0" y1="421.0" x2="550.0" y2="421.0" stroke="#c7792b" stroke-width="2.5" stroke-dasharray="8 7"/>
+<line x1="314.0" y1="471.7" x2="326.0" y2="483.7" stroke="#c7792b" stroke-width="3"/>
+<line x1="314.0" y1="483.7" x2="326.0" y2="471.7" stroke="#c7792b" stroke-width="3"/>
+<line x1="314.0" y1="528.3" x2="326.0" y2="540.3" stroke="#c7792b" stroke-width="3"/>
+<line x1="314.0" y1="540.3" x2="326.0" y2="528.3" stroke="#c7792b" stroke-width="3"/>
+<line x1="314.0" y1="490.0" x2="326.0" y2="502.0" stroke="#c7792b" stroke-width="3"/>
+<line x1="314.0" y1="502.0" x2="326.0" y2="490.0" stroke="#c7792b" stroke-width="3"/>
+<line x1="233.0" y1="415.0" x2="245.0" y2="427.0" stroke="#c7792b" stroke-width="3"/>
+<line x1="233.0" y1="427.0" x2="245.0" y2="415.0" stroke="#c7792b" stroke-width="3"/>
+<line x1="385.1" y1="415.0" x2="397.1" y2="427.0" stroke="#c7792b" stroke-width="3"/>
+<line x1="385.1" y1="427.0" x2="397.1" y2="415.0" stroke="#c7792b" stroke-width="3"/>
+<line x1="314.0" y1="326.0" x2="326.0" y2="338.0" stroke="#c7792b" stroke-width="3"/>
+<line x1="314.0" y1="338.0" x2="326.0" y2="326.0" stroke="#c7792b" stroke-width="3"/>
+<circle cx="140.0" cy="336.0" r="9" fill="#2b5f9e"/>
+<circle cx="200.0" cy="326.0" r="9" fill="#2b5f9e"/>
+<circle cx="170.0" cy="386.0" r="9" fill="#2b5f9e"/>
+<circle cx="220.0" cy="381.0" r="9" fill="#2b5f9e"/>
+<circle cx="400.0" cy="336.0" r="9" fill="#2b5f9e"/>
+<circle cx="460.0" cy="316.0" r="9" fill="#2b5f9e"/>
+<circle cx="490.0" cy="376.0" r="9" fill="#2b5f9e"/>
+<circle cx="430.0" cy="386.0" r="9" fill="#2b5f9e"/>
+<circle cx="270.0" cy="486.0" r="9" fill="#2b5f9e"/>
+<circle cx="330.0" cy="476.0" r="9" fill="#2b5f9e"/>
+<circle cx="300.0" cy="536.0" r="9" fill="#2b5f9e"/>
+<circle cx="360.0" cy="531.0" r="9" fill="#2b5f9e"/>
+<rect x="610.0" y="196.0" width="540.0" height="410.0" rx="16" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="880.0" y="232.0" fill="#232a33" font-size="20" text-anchor="middle" font-weight="700">結びつきから導く</text>
+<line x1="700.0" y1="336.0" x2="760.0" y2="326.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="760.0" y1="326.0" x2="780.0" y2="381.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="700.0" y1="336.0" x2="730.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="730.0" y1="386.0" x2="780.0" y2="381.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="760.0" y1="326.0" x2="730.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="960.0" y1="336.0" x2="1020.0" y2="316.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="1020.0" y1="316.0" x2="1050.0" y2="376.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="1050.0" y1="376.0" x2="990.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="960.0" y1="336.0" x2="990.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="1020.0" y1="316.0" x2="990.0" y2="386.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="830.0" y1="486.0" x2="890.0" y2="476.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="890.0" y1="476.0" x2="920.0" y2="531.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="830.0" y1="486.0" x2="860.0" y2="536.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="860.0" y1="536.0" x2="920.0" y2="531.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="890.0" y1="476.0" x2="860.0" y2="536.0" stroke="#5d6873" stroke-width="2"/>
+<line x1="780.0" y1="381.0" x2="830.0" y2="486.0" stroke="#5d6873" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="990.0" y1="386.0" x2="890.0" y2="476.0" stroke="#5d6873" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="760.0" y1="326.0" x2="960.0" y2="336.0" stroke="#5d6873" stroke-width="2" stroke-dasharray="8 7"/>
+<ellipse cx="740.0" cy="356.0" rx="72.0" ry="56.0" fill="#2f8f83" stroke="#2f8f83" stroke-width="2" stroke-dasharray="7 6" opacity="0.14"/>
+<ellipse cx="1005.0" cy="351.0" rx="72.0" ry="56.0" fill="#2f8f83" stroke="#2f8f83" stroke-width="2" stroke-dasharray="7 6" opacity="0.14"/>
+<ellipse cx="875.0" cy="508.0" rx="78.0" ry="52.0" fill="#2f8f83" stroke="#2f8f83" stroke-width="2" stroke-dasharray="7 6" opacity="0.14"/>
+<circle cx="700.0" cy="336.0" r="9" fill="#2b5f9e"/>
+<circle cx="760.0" cy="326.0" r="9" fill="#2b5f9e"/>
+<circle cx="730.0" cy="386.0" r="9" fill="#2b5f9e"/>
+<circle cx="780.0" cy="381.0" r="9" fill="#2b5f9e"/>
+<circle cx="960.0" cy="336.0" r="9" fill="#2b5f9e"/>
+<circle cx="1020.0" cy="316.0" r="9" fill="#2b5f9e"/>
+<circle cx="1050.0" cy="376.0" r="9" fill="#2b5f9e"/>
+<circle cx="990.0" cy="386.0" r="9" fill="#2b5f9e"/>
+<circle cx="830.0" cy="486.0" r="9" fill="#2b5f9e"/>
+<circle cx="890.0" cy="476.0" r="9" fill="#2b5f9e"/>
+<circle cx="860.0" cy="536.0" r="9" fill="#2b5f9e"/>
+<circle cx="920.0" cy="531.0" r="9" fill="#2b5f9e"/>
+<text x="80.0" y="584.0" fill="#c7792b" font-size="16" text-anchor="start" font-weight="700">×　分類の境界で切られる関係</text>
+<text x="640.0" y="584.0" fill="#2f8f83" font-size="16" text-anchor="start" font-weight="700">破線の輪　関係の密なまとまり</text>
+<text x="50.0" y="672.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">分け方は、先に決めるのではなく、問題の構造から導く。</text>
+</g>
+</svg>

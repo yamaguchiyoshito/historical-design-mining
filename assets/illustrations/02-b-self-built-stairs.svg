@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+<title id="title">道具で、次の道具をつくる</title>
+<desc id="desc">自分たちの仕事を効果的にする手段を、まず自分たちで開発する</desc>
+<defs><marker id="arrow-2f8f83" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f8f83" stroke-width="1.4"/></marker></defs>
+<rect width="1200" height="640" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     02     図2-2</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">道具で、次の道具をつくる</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">自分たちの仕事を効果的にする手段を、まず自分たちで開発する</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1064.0" y="34.0" width="86.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1107.0" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">イメージ</text>
+<rect x="130.0" y="500.0" width="205.0" height="56.0" rx="8" fill="#2b5f9e" stroke="#2b5f9e" stroke-width="2.5" opacity="0.1"/>
+<rect x="130.0" y="500.0" width="205.0" height="56.0" rx="8" fill="none" stroke="#2b5f9e" stroke-width="2.5"/>
+<text x="146.0" y="530.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">最初の道具</text>
+<path d="M 295 492 C 330 422 365 362 398 430" fill="none" stroke="#2f8f83" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-2f8f83)"/>
+<text x="347.0" y="398.0" fill="#2f8f83" font-size="15" text-anchor="middle" font-weight="700">つくる</text>
+<rect x="340.0" y="440.0" width="205.0" height="116.0" rx="8" fill="#2b5f9e" stroke="#2b5f9e" stroke-width="2.5" opacity="0.17"/>
+<rect x="340.0" y="440.0" width="205.0" height="116.0" rx="8" fill="none" stroke="#2b5f9e" stroke-width="2.5"/>
+<text x="356.0" y="470.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">その道具で</text>
+<text x="356.0" y="492.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">つくった次の道具</text>
+<path d="M 505 432 C 540 362 575 302 608 370" fill="none" stroke="#2f8f83" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-2f8f83)"/>
+<text x="557.0" y="338.0" fill="#2f8f83" font-size="15" text-anchor="middle" font-weight="700">つくる</text>
+<rect x="550.0" y="380.0" width="205.0" height="176.0" rx="8" fill="#2b5f9e" stroke="#2b5f9e" stroke-width="2.5" opacity="0.24000000000000002"/>
+<rect x="550.0" y="380.0" width="205.0" height="176.0" rx="8" fill="none" stroke="#2b5f9e" stroke-width="2.5"/>
+<text x="566.0" y="410.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">さらに、その道具で</text>
+<text x="566.0" y="432.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">つくる道具</text>
+<path d="M 715 372 C 750 302 785 242 818 310" fill="none" stroke="#2f8f83" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-2f8f83)"/>
+<text x="767.0" y="278.0" fill="#2f8f83" font-size="15" text-anchor="middle" font-weight="700">つくる</text>
+<rect x="760.0" y="320.0" width="205.0" height="236.0" rx="8" fill="#2b5f9e" stroke="#2b5f9e" stroke-width="2.5" opacity="0.31000000000000005"/>
+<rect x="760.0" y="320.0" width="205.0" height="236.0" rx="8" fill="none" stroke="#2b5f9e" stroke-width="2.5"/>
+<text x="776.0" y="350.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">仕事がより</text>
+<text x="776.0" y="372.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">効果的になる</text>
+<circle cx="890.0" cy="280.0" r="11" fill="#5d6873"/>
+<polygon points="885.0,294.0 895.0,294.0 910.0,320.0 870.0,320.0" fill="#5d6873" stroke="none" stroke-width="2" stroke-linejoin="round"/>
+<text x="50.0" y="240.0" fill="#5d6873" font-size="16" text-anchor="start" font-weight="400">拡張の研究に取り組む集団が、</text>
+<text x="50.0" y="263.0" fill="#5d6873" font-size="16" text-anchor="start" font-weight="400">自分たちの仕事を効果的に</text>
+<text x="50.0" y="286.0" fill="#5d6873" font-size="16" text-anchor="start" font-weight="400">する手段を、まず自分たち</text>
+<text x="50.0" y="309.0" fill="#5d6873" font-size="16" text-anchor="start" font-weight="400">で開発する。</text>
+<text x="50.0" y="612.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">道具をまず自分たちで開発し、その道具で次の仕事を進める。</text>
+</g>
+</svg>

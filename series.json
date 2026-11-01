@@ -2,6 +2,7 @@
   "id": "historical-design-mining",
   "code": "HISTORICAL DESIGN MINING",
   "index": "README.md",
+  "cover": "assets/illustrations/00-cover.svg",
   "title": "古い器に新しい水を入れる",
   "subtitle": "過去の知を発掘し、AIエージェントによって再実装する、全4回",
   "language": "ja",
@@ -18,7 +19,8 @@
       "path": "articles/01-past-texts-as-future-designs.md",
       "figures": [
         "01-a-why-not-inherited.svg",
-        "01-b-series-map.svg"
+        "01-b-blueprint-under-text.svg",
+        "01-c-series-map.svg"
       ]
     },
     {
@@ -29,8 +31,10 @@
       "path": "articles/02-excavating-forgotten-designs.md",
       "figures": [
         "02-a-h-lam-t.svg",
-        "02-b-alexander-lineage.svg",
-        "02-c-origin-vs-successors.svg"
+        "02-b-self-built-stairs.svg",
+        "02-c-split-by-relations.svg",
+        "02-d-alexander-lineage.svg",
+        "02-e-origin-vs-successors.svg"
       ]
     },
     {
@@ -40,9 +44,10 @@
       "summary": "探索、継承調査、仕様化、評価の四工程を、入力・出力・失敗条件つきのAgent Skillとして設計する。",
       "path": "articles/03-from-reading-to-mining-agent.md",
       "figures": [
-        "03-a-lineage-four-states.svg",
-        "03-b-spec-with-status.svg",
-        "03-c-four-steps-pipeline.svg"
+        "03-a-search-vs-excavation.svg",
+        "03-b-lineage-four-states.svg",
+        "03-c-spec-with-status.svg",
+        "03-d-four-steps-pipeline.svg"
       ],
       "status": {
         "label": "設計案",
@@ -56,9 +61,10 @@
       "summary": "忠実な再現と現代的な拡張を区別し、比較実験の条件を示す。実施前の実験計画として、第1回の問いに答える。",
       "path": "articles/04-reimplementing-old-ideas.md",
       "figures": [
-        "04-a-requirements-graph.svg",
-        "04-b-who-does-what.svg",
-        "04-c-experiment-design.svg"
+        "04-a-vessel-and-water.svg",
+        "04-b-requirements-graph.svg",
+        "04-c-who-does-what.svg",
+        "04-d-experiment-design.svg"
       ],
       "status": {
         "label": "実験計画",

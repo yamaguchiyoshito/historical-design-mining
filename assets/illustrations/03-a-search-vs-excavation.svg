@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+<title id="title">検索は集め、発掘は取り出す</title>
+<desc id="desc">何が書かれているかを探すことと、何に使えるかを探すこと</desc>
+<defs></defs>
+<rect width="1200" height="660" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     03     図3-1</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">検索は集め、発掘は取り出す</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">何が書かれているかを探すことと、何に使えるかを探すこと</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1064.0" y="34.0" width="86.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1107.0" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">イメージ</text>
+<rect x="50.0" y="196.0" width="540.0" height="380.0" rx="16" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="610.0" y="196.0" width="540.0" height="380.0" rx="16" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="320.0" y="232.0" fill="#232a33" font-size="20" text-anchor="middle" font-weight="700">検索：何が書かれているか</text>
+<text x="880.0" y="232.0" fill="#232a33" font-size="20" text-anchor="middle" font-weight="700">発掘：何に使えるか</text>
+<rect x="70.0" y="330.0" width="500.0" height="190.0" rx="12" fill="#2b5f9e" stroke="none" stroke-width="0" opacity="0.1"/>
+<polyline points="70.0,330.0 73.1,329.1 76.2,328.2 79.4,327.4 82.5,326.8 85.6,326.3 88.8,326.0 91.9,326.0 95.0,326.2 98.1,326.6 101.2,327.2 104.4,327.9 107.5,328.8 110.6,329.7 113.8,330.6 116.9,331.5 120.0,332.4 123.1,333.0 126.2,333.6 129.4,333.9 132.5,334.0 135.6,333.9 138.8,333.6 141.9,333.0 145.0,332.4 148.1,331.5 151.2,330.6 154.4,329.7 157.5,328.8 160.6,327.9 163.8,327.2 166.9,326.6 170.0,326.2 173.1,326.0 176.2,326.0 179.4,326.3 182.5,326.8 185.6,327.4 188.8,328.2 191.9,329.1 195.0,330.0 198.1,330.9 201.2,331.8 204.4,332.6 207.5,333.2 210.6,333.7 213.8,334.0 216.9,334.0 220.0,333.8 223.1,333.4 226.2,332.8 229.4,332.1 232.5,331.2 235.6,330.3 238.8,329.4 241.9,328.5 245.0,327.6 248.1,327.0 251.2,326.4 254.4,326.1 257.5,326.0 260.6,326.1 263.8,326.4 266.9,327.0 270.0,327.6 273.1,328.5 276.2,329.4 279.4,330.3 282.5,331.2 285.6,332.1 288.8,332.8 291.9,333.4 295.0,333.8 298.1,334.0 301.2,334.0 304.4,333.7 307.5,333.2 310.6,332.6 313.8,331.8 316.9,330.9 320.0,330.0 323.1,329.1 326.2,328.2 329.4,327.4 332.5,326.8 335.6,326.3 338.8,326.0 341.9,326.0 345.0,326.2 348.1,326.6 351.2,327.2 354.4,327.9 357.5,328.8 360.6,329.7 363.8,330.6 366.9,331.5 370.0,332.4 373.1,333.0 376.2,333.6 379.4,333.9 382.5,334.0 385.6,333.9 388.8,333.6 391.9,333.0 395.0,332.4 398.1,331.5 401.2,330.6 404.4,329.7 407.5,328.8 410.6,327.9 413.8,327.2 416.9,326.6 420.0,326.2 423.1,326.0 426.2,326.0 429.4,326.3 432.5,326.8 435.6,327.4 438.8,328.2 441.9,329.1 445.0,330.0 448.1,330.9 451.2,331.8 454.4,332.6 457.5,333.2 460.6,333.7 463.8,334.0 466.9,334.0 470.0,333.8 473.1,333.4 476.2,332.8 479.4,332.1 482.5,331.2 485.6,330.3 488.8,329.4 491.9,328.5 495.0,327.6 498.1,327.0 501.2,326.4 504.4,326.1 507.5,326.0 510.6,326.1 513.8,326.4 516.9,327.0 520.0,327.6 523.1,328.5 526.2,329.4 529.4,330.3 532.5,331.2 535.6,332.1 538.8,332.8 541.9,333.4 545.0,333.8 548.1,334.0 551.2,334.0 554.4,333.7 557.5,333.2 560.6,332.6 563.8,331.8 566.9,330.9 570.0,330.0" fill="none" stroke="#2b5f9e" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="110.0" y="304.0" width="30.0" height="40.0" rx="3" fill="#ffffff" stroke="#5d6873" stroke-width="1.5"/>
+<line x1="116.0" y1="314.0" x2="134.0" y2="314.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="116.0" y1="322.0" x2="134.0" y2="322.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="116.0" y1="330.0" x2="134.0" y2="330.0" stroke="#d8d4c8" stroke-width="2"/>
+<rect x="170.0" y="304.0" width="30.0" height="40.0" rx="3" fill="#ffffff" stroke="#5d6873" stroke-width="1.5"/>
+<line x1="176.0" y1="314.0" x2="194.0" y2="314.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="176.0" y1="322.0" x2="194.0" y2="322.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="176.0" y1="330.0" x2="194.0" y2="330.0" stroke="#d8d4c8" stroke-width="2"/>
+<rect x="255.0" y="304.0" width="30.0" height="40.0" rx="3" fill="#ffffff" stroke="#5d6873" stroke-width="1.5"/>
+<line x1="261.0" y1="314.0" x2="279.0" y2="314.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="261.0" y1="322.0" x2="279.0" y2="322.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="261.0" y1="330.0" x2="279.0" y2="330.0" stroke="#d8d4c8" stroke-width="2"/>
+<rect x="380.0" y="304.0" width="30.0" height="40.0" rx="3" fill="#ffffff" stroke="#5d6873" stroke-width="1.5"/>
+<line x1="386.0" y1="314.0" x2="404.0" y2="314.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="386.0" y1="322.0" x2="404.0" y2="322.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="386.0" y1="330.0" x2="404.0" y2="330.0" stroke="#d8d4c8" stroke-width="2"/>
+<rect x="445.0" y="304.0" width="30.0" height="40.0" rx="3" fill="#ffffff" stroke="#5d6873" stroke-width="1.5"/>
+<line x1="451.0" y1="314.0" x2="469.0" y2="314.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="451.0" y1="322.0" x2="469.0" y2="322.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="451.0" y1="330.0" x2="469.0" y2="330.0" stroke="#d8d4c8" stroke-width="2"/>
+<rect x="510.0" y="304.0" width="30.0" height="40.0" rx="3" fill="#ffffff" stroke="#5d6873" stroke-width="1.5"/>
+<line x1="516.0" y1="314.0" x2="534.0" y2="314.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="516.0" y1="322.0" x2="534.0" y2="322.0" stroke="#d8d4c8" stroke-width="2"/>
+<line x1="516.0" y1="330.0" x2="534.0" y2="330.0" stroke="#d8d4c8" stroke-width="2"/>
+<path d="M 228 296 Q 320 440 412 296" fill="none" stroke="#232a33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="320.0" cy="296.0" rx="92.0" ry="26.0" fill="none" stroke="#232a33" stroke-width="3"/>
+<path d="M 256 316 Q 280 380 320 396" fill="none" stroke="#232a33" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<path d="M 288 316 Q 300 380 320 396" fill="none" stroke="#232a33" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<path d="M 320 316 Q 320 380 320 396" fill="none" stroke="#232a33" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<path d="M 352 316 Q 340 380 320 396" fill="none" stroke="#232a33" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<path d="M 384 316 Q 360 380 320 396" fill="none" stroke="#232a33" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<rect x="277.0" y="322.0" width="30.0" height="40.0" rx="3" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<rect x="321.0" y="322.0" width="30.0" height="40.0" rx="3" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<line x1="412.0" y1="296.0" x2="520.0" y2="214.0" stroke="#a8793f" stroke-width="6"/>
+<text x="320.0" y="560.0" fill="#5d6873" font-size="16" text-anchor="middle" font-weight="400">現在のキーワードに一致する文献を集める</text>
+<rect x="630.0" y="300.0" width="500.0" height="55.0" rx="0" fill="#ecdcc0" stroke="none" stroke-width="0"/>
+<rect x="630.0" y="355.0" width="500.0" height="55.0" rx="0" fill="#e2cba4" stroke="none" stroke-width="0"/>
+<rect x="630.0" y="410.0" width="500.0" height="55.0" rx="0" fill="#d7bb8c" stroke="none" stroke-width="0"/>
+<rect x="630.0" y="465.0" width="500.0" height="55.0" rx="0" fill="#cbab7a" stroke="none" stroke-width="0"/>
+<line x1="630.0" y1="300.0" x2="840.0" y2="300.0" stroke="#a8793f" stroke-width="2.5"/>
+<line x1="960.0" y1="300.0" x2="1130.0" y2="300.0" stroke="#a8793f" stroke-width="2.5"/>
+<rect x="840.0" y="296.0" width="120.0" height="140.0" rx="4" fill="#f7f5ef" stroke="#a8793f" stroke-width="2.5"/>
+<rect x="838.0" y="288.0" width="124.0" height="12.0" rx="0" fill="#f7f5ef" stroke="none" stroke-width="0"/>
+<polygon points="928.0,404.0 918.5,411.7 919.8,423.8 907.7,422.5 900.0,432.0 892.3,422.5 880.2,423.8 881.5,411.7 872.0,404.0 881.5,396.3 880.2,384.2 892.3,385.5 900.0,376.0 907.7,385.5 919.8,384.2 918.5,396.3" fill="#2f8f83" stroke="#2f8f83" stroke-width="2" stroke-linejoin="round" opacity="0.9"/>
+<circle cx="900.0" cy="404.0" r="8" fill="#f7f5ef"/>
+<line x1="928.0" y1="392.0" x2="990.0" y2="350.0" stroke="#2f8f83" stroke-width="2.5"/>
+<text x="996.0" y="346.0" fill="#2f8f83" font-size="15" text-anchor="start" font-weight="700">現代でも使える</text>
+<text x="996.0" y="365.0" fill="#2f8f83" font-size="15" text-anchor="start" font-weight="700">原理や部品</text>
+<text x="640.0" y="284.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="400">層＝年代の異なる文献</text>
+<text x="880.0" y="560.0" fill="#5d6873" font-size="16" text-anchor="middle" font-weight="400">問題構造を比べ、使える原理を取り出す</text>
+<text x="50.0" y="632.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">検索は書かれたことを探し、発掘は使えることを探す。</text>
+</g>
+</svg>

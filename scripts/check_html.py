@@ -79,10 +79,14 @@ def check(site: Path) -> dict:
         page = site / 'articles' / (Path(c['path']).stem + '.html')
         if page.resolve() in docs and docs[page.resolve()].figures != want:
             errors.append(f'{page.name}: expected {want} figures, found {docs[page.resolve()].figures}')
+    index = (site / 'index.html').resolve()
+    if index in docs and docs[index].figures != (1 if series.get('cover') else 0):
+        errors.append(f'index.html: expected the cover figure, found {docs[index].figures} figures')
     complete = (site / 'complete.html').resolve()
     if complete in docs and docs[complete].figures != total:
         errors.append(f'complete.html: expected {total} figures, found {docs[complete].figures}')
-    for name in (n for c in series['chapters'] for n in c.get('figures', [])):
+    covers = [Path(series['cover']).name] if series.get('cover') else []
+    for name in covers + [n for c in series['chapters'] for n in c.get('figures', [])]:
         if not (site / 'assets' / 'illustrations' / name).exists():
             errors.append(f'Missing assets/illustrations/{name}')
     for rel in ('assets/styles.css', '.nojekyll'):
