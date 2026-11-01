@@ -185,7 +185,6 @@ def page(series: dict, *, title: str, description: str, body: str, out_rel: Path
 <nav aria-label="サイト内">
 <a href="{root}index.html">目次</a>
 <a href="{root}complete.html">全文</a>
-<a href="{root}{series['log'][:-3]}.html">検証ログ</a>
 </nav>
 </header>
 <main id="main">

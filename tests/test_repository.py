@@ -117,6 +117,18 @@ class RepositoryTests(unittest.TestCase):
             for input_id in ('f-all', 'f-confirmed', 'f-fixed', 'f-open'):
                 self.assertIn(f'id="{input_id}"', log)
 
+    def test_readers_are_not_pointed_to_the_verification_log(self):
+        """検証ログは編集側の記録であり、読者向けページから辿る導線を置かない。"""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            for page in out.rglob('*.html'):
+                if page.name == 'verification-log.html':
+                    continue
+                text = page.read_text(encoding='utf-8')
+                self.assertNotIn('verification-log', text, page.name)
+                self.assertNotIn('検証ログ', text, page.name)
+
     def test_css_does_not_nest_has(self):
         """:has() の中の :has() は無効で、ルール全体がブラウザに捨てられる。"""
         css = (ROOT / 'site-src' / 'styles.css').read_text(encoding='utf-8')
