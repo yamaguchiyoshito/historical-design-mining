@@ -161,14 +161,6 @@ details.toc {
 details.toc summary { cursor: pointer; font-weight: 700; }
 details.toc ol { margin: 0.5rem 0 0; padding-left: 1.5rem; }
 
-.log-link {
-  margin-top: 2.5rem;
-  padding-top: 1rem;
-  border-top: 1px dashed var(--line);
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
 /* 検証ログ: 区分での絞り込み（JavaScriptを使わず :has() で行う） */
 .log-filter {
   display: flex;

@@ -86,7 +86,7 @@ class RepositoryTests(unittest.TestCase):
                 self.assertIn('class="status"', page)
             for number in range(1, 5):
                 page = next((out / 'articles').glob(f'0{number}-*.html')).read_text(encoding='utf-8')
-                self.assertIn(f'verification-log.html#第{number}回', page)
+                self.assertNotIn('この回の事実確認の内容と未解決事項は', page)
                 self.assertIn('class="toc"', page)
 
     def test_log_rows_are_classified(self):
