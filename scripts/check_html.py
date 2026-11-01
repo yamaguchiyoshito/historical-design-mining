@@ -21,6 +21,7 @@ class Document(HTMLParser):
         self.h1 = 0
         self.figures = 0
         self.images_without_alt = 0
+        self.label_targets: list[str] = []
         self.feed(text)
 
     def handle_starttag(self, tag, attributes):
@@ -31,6 +32,8 @@ class Document(HTMLParser):
             self.scripts += 1
         if tag == 'h1':
             self.h1 += 1
+        if tag == 'label' and 'for' in attrs:
+            self.label_targets.append(attrs['for'])
         if tag == 'figure':
             self.figures += 1
         if tag == 'img' and not attrs.get('alt', '').strip():
@@ -51,6 +54,9 @@ def check(site: Path) -> dict:
                 errors.append(f'{name}: duplicate ID {ident}')
         if doc.scripts:
             errors.append(f'{name}: unexpected script')
+        for target in doc.label_targets:
+            if target not in doc.ids:
+                errors.append(f'{name}: label points to a missing control #{target}')
         if doc.images_without_alt:
             errors.append(f'{name}: {doc.images_without_alt} image(s) without alt text')
         if name.name != 'complete.html' and doc.h1 != 1:

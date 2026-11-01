@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import draw_figures  # noqa: E402
 from build import (annotate_log_tables, build, load_series, localize_chapter_links, map_md_links, relocate_assets,  # noqa: E402
-                   row_kinds, section_toc, site_index_text, status_note, wrap_figures, wrap_tables)
+                   mark_key_statements, row_kinds, section_toc, site_index_text, status_note, wrap_figures, wrap_tables)
 from check_html import check  # noqa: E402
 from validate import BARE_URL, Result, check_figures, headings, svg_errors, validate  # noqa: E402
 
@@ -151,6 +151,61 @@ class RepositoryTests(unittest.TestCase):
 
 GOOD_SVG = ('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" role="img">'
             '<title>t</title><desc>d</desc>{body}</svg>')
+
+
+class ReadingTests(unittest.TestCase):
+    def test_key_statements_are_marked_only_when_the_paragraph_is_all_bold(self):
+        out = mark_key_statements('<p><strong>結論の一文。</strong></p>\n<p>前置き<strong>強調</strong>と続き。</p>')
+        self.assertIn('<p class="key"><strong>結論の一文。</strong></p>', out)
+        self.assertIn('<p>前置き<strong>強調</strong>と続き。</p>', out)
+
+    def test_chapters_mark_key_statements_but_the_index_and_log_do_not(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            for page in (out / 'articles').glob('*.html'):
+                self.assertIn('<p class="key">', page.read_text(encoding='utf-8'), page.name)
+            self.assertNotIn('class="key"', (out / 'index.html').read_text(encoding='utf-8'))
+            self.assertNotIn('class="key"', (out / 'editorial' / 'verification-log.html').read_text(encoding='utf-8'))
+
+    def test_every_page_has_a_sticky_header_and_a_chapter_drawer(self):
+        chapters = load_series()['chapters']
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            for page in out.rglob('*.html'):
+                text = page.read_text(encoding='utf-8')
+                self.assertIn('id="toc-state"', text, page.name)
+                self.assertIn('for="toc-state"', text, page.name)
+                self.assertEqual(text.count('class="chapter-link'), len(chapters), page.name)
+
+    def test_the_drawer_marks_the_chapter_being_read(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            for i, c in enumerate(load_series()['chapters']):
+                text = (out / 'articles' / f'{Path(c["path"]).stem}.html').read_text(encoding='utf-8')
+                self.assertEqual(text.count('chapter-link current'), 1)
+                self.assertEqual(text.count('aria-current="page"'), 1)
+                self.assertIn(f'<a class="chapter-link current" href="../articles/{Path(c["path"]).stem}.html" aria-current="page"><span>{c["number"]}</span>', text)
+            self.assertNotIn('chapter-link current', (out / 'index.html').read_text(encoding='utf-8'))
+
+    def test_the_complete_page_drawer_jumps_within_the_page(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            text = (out / 'complete.html').read_text(encoding='utf-8')
+            links = re.findall(r'<a class="chapter-link[^"]*" href="([^"]+)"', text)
+            self.assertEqual(len(links), len(load_series()['chapters']))
+            self.assertTrue(all(link.startswith('#ch') for link in links), links)
+
+    def test_stylesheet_keeps_the_reading_fixes(self):
+        css = (ROOT / 'site-src' / 'styles.css').read_text(encoding='utf-8')
+        self.assertRegex(css, r'\nem \{ font-style: normal; \}')  # 日本語の斜体を使わない
+        self.assertIn('hr + h2', css)  # 水平線の直後の見出しに、線と余白を重ねない
+        self.assertIn('position: sticky', css)
+        self.assertIn('prefers-reduced-motion', css)
+        self.assertIn('@media print', css)
 
 
 class FigureTests(unittest.TestCase):
