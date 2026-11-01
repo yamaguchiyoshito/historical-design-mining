@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">処理ごとに、担当する技術を使い分ける</title>
+<desc id="desc">自然言語の解釈には生成AI、構造の計算には既存のアルゴリズム</desc>
+<defs><marker id="arrow-8a4f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8a4f9e" stroke-width="1.4"/></marker><marker id="arrow-c7792b" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#c7792b" stroke-width="1.4"/></marker><marker id="arrow-2b5f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2b5f9e" stroke-width="1.4"/></marker></defs>
+<rect width="1200" height="760" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     04     図4-2</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">処理ごとに、担当する技術を使い分ける</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">自然言語の解釈には生成AI、構造の計算には既存のアルゴリズム</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1079.0" y="34.0" width="71.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1114.5" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">設計案</text>
+<text x="266.0" y="214.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="700">1　要求の識別</text>
+<text x="456.0" y="214.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="700">2　関係の抽出</text>
+<text x="646.0" y="214.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="700">3　構造の分析</text>
+<text x="836.0" y="214.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="700">4　責務への変換</text>
+<text x="1026.0" y="214.0" fill="#232a33" font-size="16" text-anchor="middle" font-weight="700">5　実装と検証</text>
+<rect x="40.0" y="232.0" width="1110.0" height="134.0" rx="14" fill="#ece9e0" stroke="#d8d4c8" stroke-width="2"/>
+<text x="54.0" y="302.0" fill="#8a4f9e" font-size="16" text-anchor="start" font-weight="700">生成AI</text>
+<rect x="40.0" y="376.0" width="1110.0" height="134.0" rx="14" fill="#ece9e0" stroke="#d8d4c8" stroke-width="2"/>
+<text x="54.0" y="426.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">既存の</text>
+<text x="54.0" y="448.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">アルゴリズム</text>
+<text x="54.0" y="470.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">・開発ツール</text>
+<rect x="40.0" y="520.0" width="1110.0" height="134.0" rx="14" fill="#ece9e0" stroke="#d8d4c8" stroke-width="2"/>
+<text x="54.0" y="590.0" fill="#c7792b" font-size="16" text-anchor="start" font-weight="700">人間</text>
+<rect x="186.0" y="244.0" width="160.0" height="110.0" rx="12" fill="#ffffff" stroke="#8a4f9e" stroke-width="2"/>
+<text x="198.0" y="270.0" fill="#8a4f9e" font-size="16" text-anchor="start" font-weight="700">要求の識別</text>
+<text x="198.0" y="292.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">要求ごとにIDと</text>
+<text x="198.0" y="310.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">原文の参照箇所を</text>
+<text x="198.0" y="328.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">付ける</text>
+<rect x="376.0" y="244.0" width="160.0" height="110.0" rx="12" fill="#ffffff" stroke="#8a4f9e" stroke-width="2"/>
+<text x="388.0" y="270.0" fill="#8a4f9e" font-size="16" text-anchor="start" font-weight="700">関係の抽出</text>
+<text x="388.0" y="292.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">変更の影響・制約・</text>
+<text x="388.0" y="310.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">依存を、根拠つき</text>
+<text x="388.0" y="328.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">で抽出する</text>
+<rect x="376.0" y="532.0" width="160.0" height="110.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="388.0" y="558.0" fill="#c7792b" font-size="16" text-anchor="start" font-weight="700">根拠の確認</text>
+<text x="388.0" y="580.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">不十分な関係を</text>
+<text x="388.0" y="598.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">人間が確認する</text>
+<rect x="566.0" y="388.0" width="160.0" height="110.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="578.0" y="414.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">構造の分析</text>
+<text x="578.0" y="436.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">グラフ分割で複数</text>
+<text x="578.0" y="454.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">候補を計算し、結</text>
+<text x="578.0" y="472.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">びつきと依存を</text>
+<text x="578.0" y="490.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">評価する</text>
+<rect x="756.0" y="244.0" width="160.0" height="110.0" rx="12" fill="#ffffff" stroke="#8a4f9e" stroke-width="2"/>
+<text x="768.0" y="270.0" fill="#8a4f9e" font-size="16" text-anchor="start" font-weight="700">責務への変換</text>
+<text x="768.0" y="292.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">候補を説明し、</text>
+<text x="768.0" y="310.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">責務へ変換する。</text>
+<text x="768.0" y="328.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">業務上の責務なども</text>
+<text x="768.0" y="346.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">考慮する</text>
+<rect x="946.0" y="244.0" width="160.0" height="110.0" rx="12" fill="#ffffff" stroke="#8a4f9e" stroke-width="2"/>
+<text x="958.0" y="270.0" fill="#8a4f9e" font-size="16" text-anchor="start" font-weight="700">コード生成</text>
+<text x="958.0" y="292.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">仕様からコード</text>
+<text x="958.0" y="310.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">を生成する</text>
+<rect x="946.0" y="388.0" width="160.0" height="110.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="958.0" y="414.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">開発ツール</text>
+<text x="958.0" y="436.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">テストを実行し、</text>
+<text x="958.0" y="454.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">結果を確認する</text>
+<line x1="346.0" y1="299.0" x2="376.0" y2="299.0" stroke="#8a4f9e" stroke-width="2.5" marker-end="url(#arrow-8a4f9e)"/>
+<line x1="456.0" y1="354.0" x2="456.0" y2="532.0" stroke="#c7792b" stroke-width="2.5" marker-end="url(#arrow-c7792b)" stroke-dasharray="8 7"/>
+<path d="M 536.0 286.0 L 551.0 286.0 L 551.0 420.0 L 566.0 420.0" fill="none" stroke="#8a4f9e" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-8a4f9e)"/>
+<path d="M 536.0 576.0 L 551.0 576.0 L 551.0 462.0 L 566.0 462.0" fill="none" stroke="#c7792b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-c7792b)"/>
+<path d="M 726.0 440.0 L 741.0 440.0 L 741.0 299.0 L 756.0 299.0" fill="none" stroke="#2b5f9e" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-2b5f9e)"/>
+<line x1="916.0" y1="299.0" x2="946.0" y2="299.0" stroke="#8a4f9e" stroke-width="2.5" marker-end="url(#arrow-8a4f9e)"/>
+<line x1="1026.0" y1="354.0" x2="1026.0" y2="388.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<line x1="186.0" y1="686.0" x2="212.0" y2="686.0" stroke="#5d6873" stroke-width="2"/>
+<text x="224.0" y="692.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">実線：処理の流れ</text>
+<line x1="450.0" y1="686.0" x2="476.0" y2="686.0" stroke="#c7792b" stroke-width="3" stroke-dasharray="8 7"/>
+<text x="488.0" y="692.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">破線：人間による確認</text>
+<text x="50.0" y="732.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">生成AIがすべてを担うのではなく、異なる技術をつなぐ。</text>
+</g>
+</svg>

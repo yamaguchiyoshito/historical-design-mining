@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+<title id="title">比較実験の計画：三つの方法を同条件で比べる</title>
+<desc id="desc">結果を見る前に、入力・指標・試行条件・レビューを固定する</desc>
+<defs><marker id="arrow-2b5f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2b5f9e" stroke-width="1.4"/></marker></defs>
+<rect width="1200" height="780" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     04     図4-3</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">比較実験の計画：三つの方法を同条件で比べる</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">結果を見る前に、入力・指標・試行条件・レビューを固定する</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="989.0" y="34.0" width="161.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1069.5" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">実験計画（未実施）</text>
+<rect x="50.0" y="204.0" width="240.0" height="298.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="70.0" y="238.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">同一の入力</text>
+<text x="70.0" y="272.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">同じ要求仕様書と</text>
+<text x="70.0" y="295.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">同じ制約を、三つの</text>
+<text x="70.0" y="318.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">方法すべてに与える。</text>
+<text x="70.0" y="364.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">仕様書は、規模や</text>
+<text x="70.0" y="387.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">領域の異なるものを</text>
+<text x="70.0" y="410.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">複数用意する。</text>
+<rect x="340.0" y="204.0" width="440.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="356.0" y="242.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">方法1</text>
+<text x="412.0" y="242.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">人間の設計者が、通常の方法で構成を検討する。</text>
+<line x1="290.0" y1="236.0" x2="340.0" y2="236.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<line x1="780.0" y1="236.0" x2="830.0" y2="236.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="340.0" y="282.0" width="440.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="356.0" y="310.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">方法2</text>
+<text x="412.0" y="310.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">生成AIに要求仕様書を渡し、直接</text>
+<text x="412.0" y="332.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">アーキテクチャを提案させる。</text>
+<line x1="290.0" y1="314.0" x2="340.0" y2="314.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<line x1="780.0" y1="314.0" x2="830.0" y2="314.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="340.0" y="360.0" width="440.0" height="64.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="356.0" y="388.0" fill="#2b5f9e" font-size="16" text-anchor="start" font-weight="700">方法3</text>
+<text x="412.0" y="388.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">要求間の関係グラフを構築し、</text>
+<text x="412.0" y="410.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">構造分析を経て設計候補を生成する。</text>
+<line x1="290.0" y1="392.0" x2="340.0" y2="392.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<line x1="780.0" y1="392.0" x2="830.0" y2="392.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="340.0" y="438.0" width="440.0" height="64.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="356.0" y="466.0" fill="#c7792b" font-size="16" text-anchor="start" font-weight="700">追加</text>
+<text x="412.0" y="466.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">方法2に、方法3で抽出した要求の</text>
+<text x="412.0" y="488.0" fill="#232a33" font-size="16" text-anchor="start" font-weight="400">関係を与える（原因の切り分け用）</text>
+<line x1="290.0" y1="470.0" x2="340.0" y2="470.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<line x1="780.0" y1="470.0" x2="830.0" y2="470.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="830.0" y="204.0" width="320.0" height="298.0" rx="14" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<text x="850.0" y="238.0" fill="#2f8f83" font-size="20" text-anchor="start" font-weight="700">事前に固定する指標</text>
+<circle cx="858.0" cy="265.0" r="4" fill="#2f8f83"/>
+<text x="872.0" y="270.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">要求の網羅性</text>
+<circle cx="858.0" cy="293.0" r="4" fill="#2f8f83"/>
+<text x="872.0" y="298.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">結合度（静的な測定値）</text>
+<circle cx="858.0" cy="321.0" r="4" fill="#2f8f83"/>
+<text x="872.0" y="326.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">変更の影響範囲</text>
+<circle cx="858.0" cy="349.0" r="4" fill="#2f8f83"/>
+<text x="872.0" y="354.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">説明可能性</text>
+<circle cx="858.0" cy="377.0" r="4" fill="#2f8f83"/>
+<text x="872.0" y="382.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">実装後の保守性</text>
+<circle cx="858.0" cy="405.0" r="4" fill="#2f8f83"/>
+<text x="872.0" y="410.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">設計時間</text>
+<text x="850.0" y="450.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="400">変更要求は事前に用意し、</text>
+<text x="850.0" y="469.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="400">開始後に指標や重みは変えない。</text>
+<rect x="50.0" y="540.0" width="356.0" height="156.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="68.0" y="572.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">試行条件を記録する</text>
+<text x="68.0" y="602.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">生成AIを使う方法は、同じ入力でも</text>
+<text x="68.0" y="624.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">出力が変わり得る。モデルの種類と版、</text>
+<text x="68.0" y="646.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">指示文、実行回数を記録し、</text>
+<text x="68.0" y="668.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">結果のばらつきを示す。</text>
+<rect x="422.0" y="540.0" width="356.0" height="156.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="440.0" y="572.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">人間が盲検でレビューする</text>
+<text x="440.0" y="602.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">どの方法で作られた設計かを伏せ、</text>
+<text x="440.0" y="624.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">複数の設計者が説明可能性や保守性を</text>
+<text x="440.0" y="646.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">評価する。判断が割れた事実も記録</text>
+<text x="440.0" y="668.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">する。</text>
+<rect x="794.0" y="540.0" width="356.0" height="156.0" rx="14" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="812.0" y="572.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">差の原因を切り分ける</text>
+<text x="812.0" y="602.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">方法3が優れていても、理由が関係</text>
+<text x="812.0" y="624.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">グラフの分割にあるのか、要求の丁寧</text>
+<text x="812.0" y="646.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">な抽出にあるのかはわからない。追加</text>
+<text x="812.0" y="668.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">の条件で原因を分けて確かめる。</text>
+<text x="50.0" y="752.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">優位が示されなかった場合も、条件つきの結果として記録する。</text>
+</g>
+</svg>

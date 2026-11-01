@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790" role="img" aria-labelledby="title desc">
+<title id="title">四つの工程と、その成果物</title>
+<desc id="desc">各工程の出力が次の工程の入力になる。最初は一つのSkillで分けてもよい</desc>
+<defs><marker id="arrow-2b5f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2b5f9e" stroke-width="1.4"/></marker></defs>
+<rect width="1200" height="790" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     03     図3-3</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">四つの工程と、その成果物</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">各工程の出力が次の工程の入力になる。最初は一つのSkillで分けてもよい</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1079.0" y="34.0" width="71.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1114.5" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">設計案</text>
+<text x="50.0" y="208.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="700">工程（Skill）</text>
+<text x="550.0" y="208.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="700">失敗とみなす条件</text>
+<text x="880.0" y="208.0" fill="#5d6873" font-size="14" text-anchor="start" font-weight="700">成果物</text>
+<rect x="50.0" y="220.0" width="470.0" height="82.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<circle cx="80.0" cy="261.0" r="17" fill="#2b5f9e"/>
+<text x="80.0" y="267.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">1</text>
+<text x="110.0" y="256.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">discover-historical-concepts</text>
+<text x="110.0" y="282.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">現代の課題から、過去の問題設定と解決原理を発見する</text>
+<line x1="520.0" y1="261.0" x2="550.0" y2="261.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="550.0" y="220.0" width="300.0" height="82.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="566.0" y="252.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">原文の位置を示せない候補</text>
+<text x="566.0" y="272.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">がある。単語の類似だけで</text>
+<text x="566.0" y="292.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">選んでいる。</text>
+<line x1="850.0" y1="261.0" x2="880.0" y2="261.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="880.0" y="220.0" width="270.0" height="82.0" rx="12" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<text x="900.0" y="256.0" fill="#2f8f83" font-size="20" text-anchor="start" font-weight="700">concept.md</text>
+<text x="900.0" y="282.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">候補の問題設定と解決原理</text>
+<line x1="285.0" y1="302.0" x2="285.0" y2="332.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="50.0" y="332.0" width="470.0" height="82.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<circle cx="80.0" cy="373.0" r="17" fill="#2b5f9e"/>
+<text x="80.0" y="379.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">2</text>
+<text x="110.0" y="368.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">trace-technical-lineage</text>
+<text x="110.0" y="394.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">継承関係を調べ、実現済みと残された可能性を整理する</text>
+<line x1="520.0" y1="373.0" x2="550.0" y2="373.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="550.0" y="332.0" width="300.0" height="82.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="566.0" y="364.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">見つからなかっただけで、</text>
+<text x="566.0" y="384.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">「未実装」と断定する。</text>
+<line x1="850.0" y1="373.0" x2="880.0" y2="373.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="880.0" y="332.0" width="270.0" height="82.0" rx="12" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<text x="900.0" y="368.0" fill="#2f8f83" font-size="20" text-anchor="start" font-weight="700">lineage.md</text>
+<text x="900.0" y="394.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">継承状態と調査範囲</text>
+<line x1="285.0" y1="414.0" x2="285.0" y2="444.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="50.0" y="444.0" width="470.0" height="82.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<circle cx="80.0" cy="485.0" r="17" fill="#2b5f9e"/>
+<text x="80.0" y="491.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">3</text>
+<text x="110.0" y="480.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">extract-design-specification</text>
+<text x="110.0" y="506.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">入出力・処理原理・制約・評価条件を抽出して仕様化する</text>
+<line x1="520.0" y1="485.0" x2="550.0" y2="485.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="550.0" y="444.0" width="300.0" height="82.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="566.0" y="476.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">原典にない項目が、区分</text>
+<text x="566.0" y="496.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">なしに補完されている。</text>
+<line x1="850.0" y1="485.0" x2="880.0" y2="485.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="880.0" y="444.0" width="270.0" height="82.0" rx="12" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<text x="900.0" y="480.0" fill="#2f8f83" font-size="20" text-anchor="start" font-weight="700">specification.md</text>
+<text x="900.0" y="506.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">原文位置・区分つきの仕様</text>
+<line x1="285.0" y1="526.0" x2="285.0" y2="556.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="50.0" y="556.0" width="470.0" height="82.0" rx="12" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<circle cx="80.0" cy="597.0" r="17" fill="#2b5f9e"/>
+<text x="80.0" y="603.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">4</text>
+<text x="110.0" y="592.0" fill="#2b5f9e" font-size="20" text-anchor="start" font-weight="700">evaluate-reimplementation-value</text>
+<text x="110.0" y="618.0" fill="#232a33" font-size="14" text-anchor="start" font-weight="400">実装可能性・既存技術との差分・期待効果・検証コストを評価</text>
+<line x1="520.0" y1="597.0" x2="550.0" y2="597.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="550.0" y="556.0" width="300.0" height="82.0" rx="12" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="566.0" y="588.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">比較対象がない。評価基準</text>
+<text x="566.0" y="608.0" fill="#232a33" font-size="15" text-anchor="start" font-weight="400">が実験の後に決められる。</text>
+<line x1="850.0" y1="597.0" x2="880.0" y2="597.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)"/>
+<rect x="880.0" y="556.0" width="270.0" height="82.0" rx="12" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<text x="900.0" y="592.0" fill="#2f8f83" font-size="20" text-anchor="start" font-weight="700">evaluation.md</text>
+<text x="900.0" y="618.0" fill="#5d6873" font-size="15" text-anchor="start" font-weight="400">評価と人間が判断する論点</text>
+<rect x="50.0" y="676.0" width="1100.0" height="56.0" rx="12" fill="none" stroke="#5d6873" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="74.0" y="710.0" fill="#232a33" font-size="17" text-anchor="start" font-weight="400">sources.md ── 原典の書誌と原文位置の一覧。原典と調査結果の出所を保持する。</text>
+<text x="50.0" y="762.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">価値の判断は研究者が担い、エージェントは判断の材料を整える。</text>
+</g>
+</svg>

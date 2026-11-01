@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">継承状態は四つに分けて記録する</title>
+<desc id="desc">「見つからなかった」ことと「存在しない」ことは別である</desc>
+<defs></defs>
+<rect width="1200" height="700" rx="20" fill="#f7f5ef"/>
+<g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
+<text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     03     図3-1</text>
+<text x="50.0" y="103.0" fill="#232a33" font-size="34" text-anchor="start" font-weight="700">継承状態は四つに分けて記録する</text>
+<text x="50.0" y="141.0" fill="#5d6873" font-size="21" text-anchor="start" font-weight="400">「見つからなかった」ことと「存在しない」ことは別である</text>
+<line x1="50.0" y1="166.0" x2="1150.0" y2="166.0" stroke="#d8d4c8" stroke-width="1"/>
+<rect x="1079.0" y="34.0" width="71.0" height="28.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2"/>
+<text x="1114.5" y="53.2" fill="#c7792b" font-size="15" text-anchor="middle" font-weight="700">設計案</text>
+<text x="50.0" y="214.0" fill="#5d6873" font-size="18" text-anchor="start" font-weight="700">対応する実装が見つかった</text>
+<rect x="50.0" y="232.0" width="346.0" height="110.0" rx="14" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<circle cx="86.0" cy="287.0" r="17" fill="#2f8f83"/>
+<text x="86.0" y="293.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">1</text>
+<text x="120.0" y="294.0" fill="#232a33" font-size="19" text-anchor="start" font-weight="700">既に実現されている</text>
+<rect x="427.0" y="232.0" width="346.0" height="110.0" rx="14" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<circle cx="463.0" cy="287.0" r="17" fill="#2f8f83"/>
+<text x="463.0" y="293.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">2</text>
+<text x="497.0" y="280.0" fill="#232a33" font-size="19" text-anchor="start" font-weight="700">一部の機能や原理だけが</text>
+<text x="497.0" y="306.0" fill="#232a33" font-size="19" text-anchor="start" font-weight="700">実現されている</text>
+<rect x="804.0" y="232.0" width="346.0" height="110.0" rx="14" fill="#ffffff" stroke="#2f8f83" stroke-width="2"/>
+<circle cx="840.0" cy="287.0" r="17" fill="#2f8f83"/>
+<text x="840.0" y="293.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">3</text>
+<text x="874.0" y="280.0" fill="#232a33" font-size="19" text-anchor="start" font-weight="700">実装の試みはあるが、</text>
+<text x="874.0" y="306.0" fill="#232a33" font-size="19" text-anchor="start" font-weight="700">十分な成果が得られていない</text>
+<text x="50.0" y="388.0" fill="#5d6873" font-size="18" text-anchor="start" font-weight="700">見つからなかった</text>
+<rect x="50.0" y="404.0" width="1100.0" height="124.0" rx="14" fill="#ffffff" stroke="#c7792b" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="92.0" cy="466.0" r="19" fill="#c7792b"/>
+<text x="92.0" y="472.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">4</text>
+<text x="130.0" y="460.0" fill="#c7792b" font-size="22" text-anchor="start" font-weight="700">調査した範囲では対応する実装が確認できない</text>
+<text x="130.0" y="496.0" fill="#232a33" font-size="18" text-anchor="start" font-weight="400">「未実装」と書いてはいけない。見つからなかったことと、存在しないことは異なる。</text>
+<text x="50.0" y="578.0" fill="#232a33" font-size="19" text-anchor="start" font-weight="700">四つの状態のいずれでも記録する、調査範囲と不確実性</text>
+<rect x="50.0" y="596.0" width="128.0" height="36.0" rx="18" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="114.0" y="620.0" fill="#2b5f9e" font-size="17" text-anchor="middle" font-weight="700">データベース</text>
+<rect x="192.0" y="596.0" width="111.0" height="36.0" rx="18" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="247.5" y="620.0" fill="#2b5f9e" font-size="17" text-anchor="middle" font-weight="700">キーワード</text>
+<rect x="317.0" y="596.0" width="111.0" height="36.0" rx="18" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="372.5" y="620.0" fill="#2b5f9e" font-size="17" text-anchor="middle" font-weight="700">調べた年代</text>
+<rect x="442.0" y="596.0" width="179.0" height="36.0" rx="18" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="531.5" y="620.0" fill="#2b5f9e" font-size="17" text-anchor="middle" font-weight="700">見つかった類似技術</text>
+<rect x="635.0" y="596.0" width="196.0" height="36.0" rx="18" fill="#ffffff" stroke="#2b5f9e" stroke-width="2"/>
+<text x="733.0" y="620.0" fill="#2b5f9e" font-size="17" text-anchor="middle" font-weight="700">判断できていない部分</text>
+<text x="50.0" y="672.0" fill="#5d6873" font-size="19" text-anchor="start" font-weight="400">調べた範囲を残すことで、「未実装」の断定を避けられる。</text>
+</g>
+</svg>

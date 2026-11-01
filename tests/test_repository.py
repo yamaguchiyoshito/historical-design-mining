@@ -1,14 +1,16 @@
 from pathlib import Path
+import re
 import sys
 import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from build import (annotate_log_tables, build, load_series, localize_chapter_links, map_md_links, row_kinds,  # noqa: E402
-                   section_toc, site_index_text, status_note, wrap_tables)
+import draw_figures  # noqa: E402
+from build import (annotate_log_tables, build, load_series, localize_chapter_links, map_md_links, relocate_assets,  # noqa: E402
+                   row_kinds, section_toc, site_index_text, status_note, wrap_figures, wrap_tables)
 from check_html import check  # noqa: E402
-from validate import validate, headings, BARE_URL  # noqa: E402
+from validate import BARE_URL, Result, check_figures, headings, svg_errors, validate  # noqa: E402
 
 
 class RepositoryTests(unittest.TestCase):
@@ -145,6 +147,102 @@ class RepositoryTests(unittest.TestCase):
         chapters = load_series()['chapters']
         html_in = '<a href="02-excavating-forgotten-designs.html#参考文献">x</a>'
         self.assertEqual(localize_chapter_links(html_in, chapters), '<a href="#ch2-参考文献">x</a>')
+
+
+GOOD_SVG = ('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" role="img">'
+            '<title>t</title><desc>d</desc>{body}</svg>')
+
+
+class FigureTests(unittest.TestCase):
+    def svg_problems(self, body: str, **replace) -> list[str]:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'x.svg'
+            path.write_text(GOOD_SVG.format(body=body).replace('role="img"', replace.get('role', 'role="img"')), encoding='utf-8')
+            return svg_errors(path)
+
+    def test_figures_match_series_and_chapter_text(self):
+        result, errors = validate()
+        self.assertEqual(errors, [])
+        expected = sum(len(c.get('figures', [])) for c in load_series()['chapters'])
+        self.assertEqual((result.figures, result.svg_files), (expected, expected))
+
+    def test_committed_svgs_are_what_the_generator_produces(self):
+        """SVGを直接編集すると、次の再生成で上書きされる。生成コードと成果物のずれを検出する。"""
+        original = draw_figures.OUT
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                draw_figures.OUT = Path(tmp)
+                names = [draw() for draw in draw_figures.FIGURES]
+            finally:
+                draw_figures.OUT = original
+            self.assertEqual(names, [n for c in load_series()['chapters'] for n in c.get('figures', [])])
+            for name in names:
+                self.assertEqual((Path(tmp) / name).read_text(encoding='utf-8'), (original / name).read_text(encoding='utf-8'), name)
+
+    def test_generator_rejects_text_that_does_not_fit(self):
+        fig = draw_figures.Figure(9, 'a', 'x', 'タイトル', '副題')
+        with self.assertRaises(ValueError):
+            fig.text(1100, 300, 'これは画面の右端からはみ出す長い文である', 24)
+        with self.assertRaises(ValueError):
+            fig.para(50, 300, 100, ['この一行は百ピクセルの幅に収まらない'], 16)
+        with self.assertRaises(ValueError):
+            fig.box(50, 300, 80, 40, '幅の狭い箱に入らない題名')
+
+    def test_generator_keeps_small_text_readable(self):
+        fig = draw_figures.Figure(9, 'a', 'x', 'タイトル', '副題')
+        fig.text(50, 300, '小さな文字', 8)
+        self.assertIn('font-size="14"', fig.body[-1])
+
+    def test_svg_checks_accept_a_passive_svg_and_reject_active_ones(self):
+        self.assertEqual(self.svg_problems('<text font-size="14">a</text>'), [])
+        self.assertTrue(any('script' in e for e in self.svg_problems('<script>alert(1)</script>')))
+        self.assertTrue(any('foreignObject' in e for e in self.svg_problems('<foreignObject/>')))
+        self.assertTrue(any('event handler' in e for e in self.svg_problems('<rect onclick="x()"/>')))
+        self.assertTrue(any('external' in e for e in self.svg_problems('<use href="https://example.com/a.svg#b"/>')))
+        self.assertTrue(any('below 14px' in e for e in self.svg_problems('<text font-size="12">a</text>')))
+        self.assertTrue(any('role="img"' in e for e in self.svg_problems('', role='')))
+
+    def test_figure_and_caption_become_one_figure_element(self):
+        html_in = '<p><img src="../assets/illustrations/a.svg" alt="代替 &amp; 説明" /></p>\n<p><em>図1-1：説明。</em></p>'
+        out = wrap_figures(html_in)
+        self.assertIn('<figure>', out)
+        self.assertIn('<figcaption>図1-1：説明。</figcaption>', out)
+        self.assertIn('alt="代替 &amp; 説明"', out)
+        self.assertIn('href="../assets/illustrations/a.svg"', out)
+        plain = '<p><img src="a.svg" alt="x" /></p>\n<p><em>次回：第2回</em></p>'
+        self.assertEqual(wrap_figures(plain), plain)
+        self.assertEqual(relocate_assets('src="../assets/illustrations/a.svg"'), 'src="assets/illustrations/a.svg"')
+
+    def test_built_site_embeds_every_figure_with_alt_and_caption(self):
+        chapters = load_series()['chapters']
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            for c in chapters:
+                page = (out / 'articles' / f'{Path(c["path"]).stem}.html').read_text(encoding='utf-8')
+                self.assertEqual(page.count('<figure>'), len(c['figures']))
+                self.assertEqual(page.count('<figcaption>図'), len(c['figures']))
+                for name in c['figures']:
+                    self.assertIn(f'src="../assets/illustrations/{name}"', page)
+                    self.assertTrue((out / 'assets' / 'illustrations' / name).exists())
+            complete = (out / 'complete.html').read_text(encoding='utf-8')
+            self.assertEqual(complete.count('<figure>'), sum(len(c['figures']) for c in chapters))
+            self.assertNotIn('src="../assets/', complete)
+            self.assertNotIn('<img src="http', complete)
+
+    def test_figure_references_that_disagree_with_series_json_are_reported(self):
+        chapter = dict(load_series()['chapters'][0])
+        text = (ROOT / chapter['path']).read_text(encoding='utf-8')
+        errors: list[str] = []
+        chapter['figures'] = chapter['figures'][:1]
+        check_figures(chapter, text, errors, Result())
+        self.assertTrue(any('must match series.json' in e for e in errors), errors)
+        self.assertTrue(any('caption' in e for e in errors), errors)
+        errors = []
+        chapter = load_series()['chapters'][0]
+        blank_alt = re.sub(r'^!\[[^\]]*\]', '![]', text, count=1, flags=re.M)
+        check_figures(chapter, blank_alt, errors, Result())
+        self.assertTrue(any('missing alt text' in e for e in errors), errors)
 
 
 if __name__ == '__main__':

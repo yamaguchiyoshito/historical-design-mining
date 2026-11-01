@@ -210,3 +210,25 @@ details.toc ol { margin: 0.5rem 0 0; padding-left: 1.5rem; }
   .log td::before { content: attr(data-label); display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted); }
   .log code, .log .table-scroll code { white-space: normal; overflow-wrap: anywhere; }
 }
+
+/* 図版: SVGは幅1200px基準で、常に明るい紙色のカードとして描かれる（ダークモードでも変えない） */
+figure { margin: 1.75rem 0 1.5rem; }
+.figure-scroll { max-width: 100%; }
+.figure-link { display: block; width: fit-content; max-width: 100%; margin: 0 auto; line-height: 0; }
+.figure-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+figure img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 0 1px var(--line); }
+figcaption { max-width: 40rem; margin: 0.6rem auto 0; color: var(--muted); font-size: 0.85rem; line-height: 1.7; text-align: left; }
+figcaption em { font-style: normal; }
+
+/* 狭い画面では、図の文字が小さくなりすぎないよう、一定の幅を保って横にスクロールさせる */
+@media (max-width: 40rem) {
+  .figure-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -1rem; padding: 0 1rem; scrollbar-width: thin; }
+  .figure-link { width: max-content; }
+  figure img { width: 54rem; max-width: none; }
+  figcaption::after { content: "　横にスクロールできる。タップで原寸。"; }
+}
+
+@media print {
+  figure { break-inside: avoid; }
+  figure img { box-shadow: none; }
+}

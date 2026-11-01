@@ -39,12 +39,14 @@ historical-design-mining/
 │   ├── 02-excavating-forgotten-designs.md
 │   ├── 03-from-reading-to-mining-agent.md
 │   └── 04-reimplementing-old-ideas.md
+├── assets/illustrations/  # 本文の図（SVG）。draw_figures.py が生成する
 ├── editorial/
 │   └── verification-log.md  # 事実確認の記録
-├── scripts/               # build.py / validate.py / check_html.py
+├── scripts/               # draw_figures.py / build.py / validate.py / check_html.py
 ├── site-src/styles.css    # サイトのスタイル
 ├── tests/                 # 回帰テスト
 ├── guides/PUBLISHING.md   # 公開手順
+├── guides/FIGURES.md      # 図版の作り方と規則
 ├── .github/workflows/     # validate.yml / pages.yml
 └── LICENSE                # CC BY 4.0
 ```
@@ -53,6 +55,7 @@ historical-design-mining/
 
 - 記事は1回につき1ファイル、ファイル名の数字順に掲載する。
 - 見出しはMarkdownの `#`（連載名）と `##`（回とタイトル）、`###`（節）を用いる。サイトでは `#` を省き、`##` をページの見出しにする。
+- 図は `scripts/draw_figures.py` で生成し、`series.json` の `figures` に登場順で登録する。規則は[図版の作り方](guides/FIGURES.md)にある。
 - 出典は各記事の末尾に記録し、未確認の仮説と確認済みの先行研究を区別する。
 - 前後ナビと目次は `series.json` から生成する。原稿に専用のマーカーは入れない。
 - 原稿の修正はGitの履歴に残し、公開前の校正はPull Requestでレビューする。
@@ -65,6 +68,7 @@ historical-design-mining/
 ローカルで確認するにはPython 3.12以降とPandoc 3.xを使う。追加のパッケージは不要である。
 
 ```sh
+python3 scripts/draw_figures.py
 python3 scripts/validate.py
 python3 -m unittest discover -s tests
 python3 scripts/build.py
