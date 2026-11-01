@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
 <title id="title">再現と拡張は、入れる水が違う</title>
 <desc id="desc">器は問題設定と設計原理、水は実現手段</desc>
-<defs><linearGradient id="grad0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient><linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient><marker id="arrow-2b5f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2b5f9e" stroke-width="1.4"/></marker></defs>
+<defs><linearGradient id="grad0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient><linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient><linearGradient id="grad2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient><marker id="arrow-2b5f9e" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2b5f9e" stroke-width="1.4"/></marker></defs>
 <rect width="1200" height="680" rx="20" fill="#f7f5ef"/>
 <g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
 <text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING     04     図4-1</text>
@@ -26,8 +26,17 @@
 <path d="M 916.0 316.4 L 921.8 319.0 L 908.8 338.0 L 934.0 357.0 L 923.2 376.0" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
 <ellipse cx="325.0" cy="301.0" rx="46.0" ry="10.0" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
 <ellipse cx="882.0" cy="301.0" rx="48.0" ry="11.0" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
-<path d="M 990 214 C 940 214 900 240 886 292" fill="none" stroke="#2b5f9e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
-<path d="M 990 214 C 940 214 900 240 886 292" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<g transform="rotate(-70 952.4 241.4)">
+<path d="M 932.2022161624536 199.42064278463417 C 932.2022161624536 214.54064278463417 913.7222161624536 220.42064278463417 913.7222161624536 245.62064278463419 C 913.7222161624536 270.8206427846342 920.8422161624536 283.4206427846342 928.8422161624536 283.4206427846342 L 975.8822161624536 283.4206427846342 C 983.8822161624536 283.4206427846342 991.0022161624536 270.8206427846342 991.0022161624536 245.62064278463419 C 991.0022161624536 220.42064278463417 972.5222161624536 214.54064278463417 972.5222161624536 199.42064278463417 Z" fill="url(#grad2)" stroke="#a8793f" stroke-width="2.5" stroke-linejoin="round"/>
+<ellipse cx="952.4" cy="199.4" rx="20.2" ry="4.8" fill="#b99b70" stroke="#a8793f" stroke-width="2.5"/>
+</g>
+<polygon points="898.0,246.0 914.0,246.0 910.5,298.0 901.5,298.0" fill="#7fa6d6" stroke="none" stroke-width="2" stroke-linejoin="round" opacity="0.9"/>
+<path d="M 903.0 252.0 L 904.0 294.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+<ellipse cx="921.0" cy="272.0" rx="3.0" ry="4.5" fill="#7fa6d6" stroke="none" stroke-width="2" opacity="0.8"/>
+<ellipse cx="892.0" cy="280.3" rx="3.0" ry="4.5" fill="#7fa6d6" stroke="none" stroke-width="2" opacity="0.8"/>
+<ellipse cx="919.0" cy="289.7" rx="3.0" ry="4.5" fill="#7fa6d6" stroke="none" stroke-width="2" opacity="0.8"/>
+<ellipse cx="906.0" cy="300.0" rx="13.0" ry="3.6" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.85"/>
+<ellipse cx="906.0" cy="300.0" rx="24.0" ry="6.7" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.85"/>
 <line x1="442.0" y1="400.0" x2="758.0" y2="400.0" stroke="#2b5f9e" stroke-width="2.5" marker-end="url(#arrow-2b5f9e)" marker-start="url(#arrow-2b5f9e)"/>
 <text x="600.0" y="380.0" fill="#2b5f9e" font-size="20" text-anchor="middle" font-weight="700">同じ器</text>
 <text x="600.0" y="430.0" fill="#5d6873" font-size="15" text-anchor="middle" font-weight="400">問題設定と設計原理を保つ</text>

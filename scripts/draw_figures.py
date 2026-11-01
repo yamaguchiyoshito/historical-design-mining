@@ -141,14 +141,15 @@ class Figure:
         op = f' opacity="{opacity}"' if opacity < 1 else ''
         self.body.append(f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="{width}" stroke-linejoin="round"{op}/>')
 
-    def vessel(self, cx, top, h, rw=72, bw=108, fw=60, water=None, water_opacity=0.8, cracks=False):
+    def vessel(self, cx, top, h, rw=72, bw=108, fw=60, water=None, water_opacity=0.8, cracks=False, shadow=True):
         """An old jar seen slightly from above. water: colour of the surface in the opening (None = empty)."""
         ry = rw * 0.24
         d = (f'M {cx - rw} {top} C {cx - rw} {top + .18 * h} {cx - bw} {top + .25 * h} {cx - bw} {top + .55 * h} '
              f'C {cx - bw} {top + .85 * h} {cx - fw - 8} {top + h} {cx - fw} {top + h} L {cx + fw} {top + h} '
              f'C {cx + fw + 8} {top + h} {cx + bw} {top + .85 * h} {cx + bw} {top + .55 * h} '
              f'C {cx + bw} {top + .25 * h} {cx + rw} {top + .18 * h} {cx + rw} {top} Z')
-        self.ellipse(cx, top + h + 6, fw + 22, 9, fill=INK, opacity=0.08)
+        if shadow:
+            self.ellipse(cx, top + h + 6, fw + 22, 9, fill=INK, opacity=0.08)
         grad = self.linear([(0, '#d9bc92'), (0.35, '#f2e4cb'), (0.7, '#ead7b8'), (1, '#c9a77a')])
         self.body.append(f'<path d="{d}" fill="{grad}" stroke="{CLAY}" stroke-width="2.5" stroke-linejoin="round"/>')
         if water:
@@ -160,6 +161,26 @@ class Figure:
             for pts in ([(-.62 * rw, ry * .9), (-.55 * rw, .13 * h), (-.78 * rw, .2 * h), (-.8 * bw, .32 * h), (-.7 * bw, .42 * h)],
                         [(.5 * rw, ry * .95), (.58 * rw, .1 * h), (.4 * rw, .2 * h), (.5 * bw, .3 * h), (.4 * bw, .4 * h)]):
                 self.curve('M ' + ' L '.join(f'{cx + dx:.1f} {top + dy:.1f}' for dx, dy in pts), AMBER, 2.5, 0.9)
+
+    def pitcher(self, lip_x, lip_y, h=100, tilt=-70):
+        """A narrow-necked jug tilted to pour to the left, placed so that its lip is at (lip_x, lip_y)."""
+        rw = .24 * h
+        rad = math.radians(tilt)
+        dx, dy = -rw, -h / 2  # the lip, relative to the jug's centre before it is tilted
+        jx = lip_x - (dx * math.cos(rad) - dy * math.sin(rad))
+        jy = lip_y - (dx * math.sin(rad) + dy * math.cos(rad))
+        self.body.append(f'<g transform="rotate({tilt} {jx:.1f} {jy:.1f})">')
+        self.vessel(jx, jy - h / 2, h, rw=rw, bw=.46 * h, fw=.28 * h, shadow=False)
+        self.body.append('</g>')
+
+    def waterfall(self, x, y0, y1):
+        """Water leaving a lip at (x, y0) and falling straight to the surface at y1: it narrows as it falls."""
+        self.polygon([(x - 8, y0), (x + 8, y0), (x + 4.5, y1), (x - 4.5, y1)], fill='#7fa6d6', opacity=0.9)
+        self.curve(f'M {x - 3:.1f} {y0 + 6:.1f} L {x - 2:.1f} {y1 - 4:.1f}', '#ffffff', 2, 0.6)
+        for dx, f_ in [(15, .5), (-14, .66), (13, .84)]:
+            self.ellipse(x + dx, y0 + (y1 - y0) * f_, 3, 4.5, fill='#7fa6d6', opacity=0.8)
+        for rx in (13, 24):
+            self.ellipse(x, y1 + 2, rx, rx * .28, stroke='#ffffff', width=2, opacity=0.85)
 
     def stream(self, d, width=10):
         self.curve(d, BLUE, width, 0.75)
@@ -591,7 +612,8 @@ def fig_cover() -> str:
     f.vessel(400, 340, 240, rw=95, bw=140, fw=76, water='#7fa6d6', cracks=True)
     for dx, dy, rx in [(-10, 4, 46), (-4, 6, 62)]:
         f.ellipse(400 + dx, 340 + dy, rx, rx * 0.2, stroke='#ffffff', width=2, opacity=0.8)
-    f.stream('M 960 210 C 820 204 600 220 440 336', 12)
+    f.pitcher(452, 240, h=104)
+    f.waterfall(452, 240, 342)
     items = [('なぜ', '1'), ('何を', '2'), ('どう発掘する', '3'), ('どう検証する', '4')]
     for i, (label, n) in enumerate(items):
         y = 400 + i * 50
@@ -747,7 +769,8 @@ def fig_4a() -> str:
     f.vessel(880, 300, 190, water='#7fa6d6', cracks=True)
     f.ellipse(325, 301, 46, 10, stroke='#ffffff', width=2, opacity=0.7)
     f.ellipse(882, 301, 48, 11, stroke='#ffffff', width=2, opacity=0.8)
-    f.stream('M 990 214 C 940 214 900 240 886 292', 10)
+    f.pitcher(906, 246, h=84)
+    f.waterfall(906, 246, 298)
     f.line(442, 400, 758, 400, color=BLUE, width=2.5, both=True)
     f.text(600, 380, '同じ器', 20, BLUE, anchor='middle', weight=700)
     f.text(600, 430, '問題設定と設計原理を保つ', 15, MUTED, anchor='middle')
