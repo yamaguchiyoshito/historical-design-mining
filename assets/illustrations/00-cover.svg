@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
 <title id="title">古い器に新しい水を入れる</title>
 <desc id="desc">過去の知を発掘し、AIエージェントによって再実装する、全4回</desc>
-<defs><linearGradient id="grad0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient></defs>
+<defs><linearGradient id="grad0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient><linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9bc92"/><stop offset="0.35" stop-color="#f2e4cb"/><stop offset="0.7" stop-color="#ead7b8"/><stop offset="1" stop-color="#c9a77a"/></linearGradient></defs>
 <rect width="1200" height="660" rx="20" fill="#f7f5ef"/>
 <g font-family='system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", Meiryo, sans-serif'>
 <text x="50.0" y="52.0" fill="#2b5f9e" font-size="18" text-anchor="start" font-weight="700">HISTORICAL DESIGN MINING</text>
@@ -40,8 +40,17 @@
 <path d="M 447.5 361.7 L 455.1 364.0 L 438.0 388.0 L 470.0 412.0 L 456.0 436.0" fill="none" stroke="#c7792b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
 <ellipse cx="390.0" cy="344.0" rx="46.0" ry="9.2" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
 <ellipse cx="396.0" cy="346.0" rx="62.0" ry="12.4" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
-<path d="M 960 210 C 820 204 600 220 440 336" fill="none" stroke="#2b5f9e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
-<path d="M 960 210 C 820 204 600 220 440 336" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<g transform="rotate(-70 509.4 234.3)">
+<path d="M 484.44083905827597 182.3303196381185 C 484.44083905827597 201.0503196381185 461.560839058276 208.3303196381185 461.560839058276 239.5303196381185 C 461.560839058276 270.7303196381185 472.28083905827594 286.3303196381185 480.28083905827594 286.3303196381185 L 538.5208390582759 286.3303196381185 C 546.5208390582759 286.3303196381185 557.2408390582759 270.7303196381185 557.2408390582759 239.5303196381185 C 557.2408390582759 208.3303196381185 534.3608390582759 201.0503196381185 534.3608390582759 182.3303196381185 Z" fill="url(#grad1)" stroke="#a8793f" stroke-width="2.5" stroke-linejoin="round"/>
+<ellipse cx="509.4" cy="182.3" rx="25.0" ry="6.0" fill="#b99b70" stroke="#a8793f" stroke-width="2.5"/>
+</g>
+<polygon points="444.0,240.0 460.0,240.0 456.5,342.0 447.5,342.0" fill="#7fa6d6" stroke="none" stroke-width="2" stroke-linejoin="round" opacity="0.9"/>
+<path d="M 449.0 246.0 L 450.0 338.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+<ellipse cx="467.0" cy="291.0" rx="3.0" ry="4.5" fill="#7fa6d6" stroke="none" stroke-width="2" opacity="0.8"/>
+<ellipse cx="438.0" cy="307.3" rx="3.0" ry="4.5" fill="#7fa6d6" stroke="none" stroke-width="2" opacity="0.8"/>
+<ellipse cx="465.0" cy="325.7" rx="3.0" ry="4.5" fill="#7fa6d6" stroke="none" stroke-width="2" opacity="0.8"/>
+<ellipse cx="452.0" cy="344.0" rx="13.0" ry="3.6" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.85"/>
+<ellipse cx="452.0" cy="344.0" rx="24.0" ry="6.7" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.85"/>
 <circle cx="690.0" cy="400.0" r="16" fill="#2b5f9e"/>
 <text x="690.0" y="406.0" fill="#ffffff" font-size="18" text-anchor="middle" font-weight="700">1</text>
 <text x="724.0" y="407.0" fill="#232a33" font-size="21" text-anchor="start" font-weight="700">なぜ</text>
