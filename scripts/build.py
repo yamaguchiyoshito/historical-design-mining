@@ -90,16 +90,14 @@ def status_note(chapter: dict) -> str:
     return f'<aside class="status" role="note"><strong>{html.escape(status["label"])}</strong>{html.escape(status["text"])}</aside>'
 
 
-def decorate_chapter(body: str, chapter: dict, *, title_tag: str, section_level: int, log_href: str) -> str:
-    """回のタイトル直後に状態ラベルと節目次を、末尾に検証ログへの案内を差し込む。"""
+def decorate_chapter(body: str, chapter: dict, *, title_tag: str, section_level: int) -> str:
+    """回のタイトル直後に状態ラベルと節目次を差し込む。"""
     close = f'</{title_tag}>'
     head, sep, rest = body.partition(close)
     if not sep:
         raise ValueError(f'{chapter["path"]}: title heading not found')
     extra = status_note(chapter) + section_toc(rest, section_level, 'この回の節')
-    log_note = (f'<p class="log-link">この回の事実確認の内容と未解決事項は、'
-                f'<a href="{log_href}#第{chapter["number"]}回">検証ログ</a>で確認できます。</p>')
-    return f'{head}{close}\n{extra}{rest}{log_note}\n'
+    return f'{head}{close}\n{extra}{rest}'
 
 
 def text_of(fragment: str) -> str:
@@ -187,7 +185,6 @@ def page(series: dict, *, title: str, description: str, body: str, out_rel: Path
 <nav aria-label="サイト内">
 <a href="{root}index.html">目次</a>
 <a href="{root}complete.html">全文</a>
-<a href="{root}{series['log'][:-3]}.html">検証ログ</a>
 </nav>
 </header>
 <main id="main">
@@ -239,8 +236,7 @@ def build(out: Path) -> list[Path]:
     for i, c in enumerate(chapters):
         source = (ROOT / c['path']).read_text(encoding='utf-8')
         nav = chapter_nav(series, i)
-        article = decorate_chapter(render(source, drop_series_title=True, shift=-1), c, title_tag='h1', section_level=2,
-                                   log_href=f'../{log_page}')
+        article = decorate_chapter(render(source, drop_series_title=True, shift=-1), c, title_tag='h1', section_level=2)
         rel = f'articles/{Path(c["path"]).stem}.html'
         emit(rel, page(series, title=f'第{c["number"]}回：{c["title"]} ｜ {series["title"]}', description=c['summary'],
                        body=f'{nav}\n<article class="chapter">\n{article}</article>\n{nav}', out_rel=Path(rel)))
@@ -250,7 +246,7 @@ def build(out: Path) -> list[Path]:
         source = (ROOT / c['path']).read_text(encoding='utf-8')
         prefix = f'ch{c["number"]}-'
         article = decorate_chapter(localize_chapter_links(render(source, drop_series_title=True, prefix=prefix), chapters),
-                                   c, title_tag='h2', section_level=3, log_href=log_page)
+                                   c, title_tag='h2', section_level=3)
         title_id = HEADING.search(article).group(2)
         sections.append(f'<article class="chapter">\n{article}</article>')
         toc_items.append(f'<li><a href="#{title_id}">第{c["number"]}回：{html.escape(c["title"])}</a></li>')

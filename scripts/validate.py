@@ -117,8 +117,10 @@ def validate() -> tuple[Result, list[str]]:
     for c in chapters:
         if f']({c["path"]})' not in head:
             errors.append(f'README.md: site index does not link {c["path"]}')
-    if f']({series["log"]})' not in head:
-        errors.append('README.md: site index does not link the verification log')
+    if f']({series["log"]})' in head:
+        errors.append('README.md: the site index must not link the verification log')
+    if f']({series["log"]})' not in index_text:
+        errors.append('README.md: the repository section must link the verification log')
     for doc in (readme, log):
         text = doc.read_text(encoding='utf-8')
         check_links(doc, text, errors, result)

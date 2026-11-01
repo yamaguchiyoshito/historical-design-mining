@@ -86,7 +86,7 @@ class RepositoryTests(unittest.TestCase):
                 self.assertIn('class="status"', page)
             for number in range(1, 5):
                 page = next((out / 'articles').glob(f'0{number}-*.html')).read_text(encoding='utf-8')
-                self.assertIn(f'verification-log.html#第{number}回', page)
+                self.assertNotIn('この回の事実確認の内容と未解決事項は', page)
                 self.assertIn('class="toc"', page)
 
     def test_log_rows_are_classified(self):
@@ -116,6 +116,18 @@ class RepositoryTests(unittest.TestCase):
             self.assertEqual(log.count('data-cases'), 4)
             for input_id in ('f-all', 'f-confirmed', 'f-fixed', 'f-open'):
                 self.assertIn(f'id="{input_id}"', log)
+
+    def test_readers_are_not_pointed_to_the_verification_log(self):
+        """検証ログは編集側の記録であり、読者向けページから辿る導線を置かない。"""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'site'
+            build(out)
+            for page in out.rglob('*.html'):
+                if page.name == 'verification-log.html':
+                    continue
+                text = page.read_text(encoding='utf-8')
+                self.assertNotIn('verification-log', text, page.name)
+                self.assertNotIn('検証ログ', text, page.name)
 
     def test_css_does_not_nest_has(self):
         """:has() の中の :has() は無効で、ルール全体がブラウザに捨てられる。"""
