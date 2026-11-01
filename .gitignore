@@ -1,5 +1,10 @@
+_site/
+__pycache__/
+*.py[cod]
+.venv/
 .DS_Store
 Thumbs.db
 *.swp
 .idea/
 .vscode/
+.claude/

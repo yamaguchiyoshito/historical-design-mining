@@ -1,0 +1,42 @@
+{
+  "id": "historical-design-mining",
+  "code": "HISTORICAL DESIGN MINING",
+  "index": "README.md",
+  "title": "古い器に新しい水を入れる",
+  "subtitle": "過去の知を発掘し、AIエージェントによって再実装する、全4回",
+  "language": "ja",
+  "tagline": "過去の文章は、未来の設計書かもしれない。",
+  "repository": "https://github.com/yamaguchiyoshito/historical-design-mining",
+  "license": "CC BY 4.0",
+  "log": "editorial/verification-log.md",
+  "chapters": [
+    {
+      "number": 1,
+      "slug": "past-texts-as-future-designs",
+      "title": "過去の文章は、未来の設計書である",
+      "summary": "技術は進歩するが、知識は必ずしも継承されない。過去の文献を設計資産として読み直す視点と、その限界を示す。",
+      "path": "articles/01-past-texts-as-future-designs.md"
+    },
+    {
+      "number": 2,
+      "slug": "excavating-forgotten-designs",
+      "title": "歴史の中に埋もれた設計を発掘する",
+      "summary": "エンゲルバートとアレグザンダーの原典をたどり、実現された部分、継承された部分、残された部分を区別する。",
+      "path": "articles/02-excavating-forgotten-designs.md"
+    },
+    {
+      "number": 3,
+      "slug": "from-reading-to-mining-agent",
+      "title": "文献を読むAIから、設計を発掘するAIへ",
+      "summary": "探索、継承調査、仕様化、評価の四工程を、入力・出力・失敗条件つきのAgent Skillとして設計する。",
+      "path": "articles/03-from-reading-to-mining-agent.md"
+    },
+    {
+      "number": 4,
+      "slug": "reimplementing-old-ideas",
+      "title": "古い器に、新しい水を入れる",
+      "summary": "忠実な再現と現代的な拡張を区別し、比較実験の条件を示す。実施前の実験計画として、第1回の問いに答える。",
+      "path": "articles/04-reimplementing-old-ideas.md"
+    }
+  ]
+}
