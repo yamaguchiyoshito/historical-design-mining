@@ -21,6 +21,9 @@
         "01-a-why-not-inherited.svg",
         "01-b-blueprint-under-text.svg",
         "01-c-series-map.svg"
+      ],
+      "vignettes": [
+        "01-a-forgotten-book.svg"
       ]
     },
     {
@@ -35,6 +38,10 @@
         "02-c-split-by-relations.svg",
         "02-d-alexander-lineage.svg",
         "02-e-origin-vs-successors.svg"
+      ],
+      "vignettes": [
+        "02-a-tangled-thread.svg",
+        "02-b-misaligned-sheets.svg"
       ]
     },
     {
@@ -48,6 +55,9 @@
         "03-b-lineage-four-states.svg",
         "03-c-spec-with-status.svg",
         "03-d-four-steps-pipeline.svg"
+      ],
+      "vignettes": [
+        "03-a-balance.svg"
       ],
       "status": {
         "label": "設計案",
@@ -65,6 +75,9 @@
         "04-b-requirements-graph.svg",
         "04-c-who-does-what.svg",
         "04-d-experiment-design.svg"
+      ],
+      "vignettes": [
+        "04-a-dry-riverbed.svg"
       ],
       "status": {
         "label": "実験計画",

@@ -42,6 +42,7 @@ historical-design-mining/
 │   ├── 03-from-reading-to-mining-agent.md
 │   └── 04-reimplementing-old-ideas.md
 ├── assets/illustrations/  # 本文の図（SVG）。draw_figures.py が生成する
+├── assets/vignettes/      # 文字を入れない小さな線画（ひとこま）。同じく生成する
 ├── editorial/
 │   └── verification-log.md  # 事実確認の記録
 ├── scripts/               # draw_figures.py / build.py / validate.py / check_html.py

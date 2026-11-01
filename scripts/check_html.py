@@ -22,7 +22,13 @@ class Document(HTMLParser):
         self.figures = 0
         self.images_without_alt = 0
         self.label_targets: list[str] = []
+        self.vignettes = 0
+        self._in_vignette = False
         self.feed(text)
+
+    def handle_endtag(self, tag):
+        if tag == 'div':
+            self._in_vignette = False
 
     def handle_starttag(self, tag, attributes):
         attrs = dict(attributes)
@@ -36,7 +42,10 @@ class Document(HTMLParser):
             self.label_targets.append(attrs['for'])
         if tag == 'figure':
             self.figures += 1
-        if tag == 'img' and not attrs.get('alt', '').strip():
+        if tag == 'div' and 'vignette' in attrs.get('class', '').split():
+            self._in_vignette = True
+            self.vignettes += 1
+        if tag == 'img' and not attrs.get('alt', '').strip() and not self._in_vignette:
             self.images_without_alt += 1
         for attr in ('href', 'src'):
             if attr in attrs:
@@ -79,10 +88,15 @@ def check(site: Path) -> dict:
     if len(docs) != expected:
         errors.append(f'Expected {expected} HTML pages, found {len(docs)}')
     total = 0
+    vignette_total = 0
     for c in series['chapters']:
         want = len(c.get('figures', []))
         total += want
+        vignettes_wanted = len(c.get('vignettes', []))
+        vignette_total += vignettes_wanted
         page = site / 'articles' / (Path(c['path']).stem + '.html')
+        if page.resolve() in docs and docs[page.resolve()].vignettes != vignettes_wanted:
+            errors.append(f'{page.name}: expected {vignettes_wanted} vignettes, found {docs[page.resolve()].vignettes}')
         if page.resolve() in docs and docs[page.resolve()].figures != want:
             errors.append(f'{page.name}: expected {want} figures, found {docs[page.resolve()].figures}')
     index = (site / 'index.html').resolve()
@@ -92,6 +106,8 @@ def check(site: Path) -> dict:
     if complete in docs and docs[complete].figures != total:
         errors.append(f'complete.html: expected {total} figures, found {docs[complete].figures}')
     covers = [Path(series['cover']).name] if series.get('cover') else []
+    if complete in docs and docs[complete].vignettes != vignette_total:
+        errors.append(f'complete.html: expected {vignette_total} vignettes, found {docs[complete].vignettes}')
     for name in covers + [n for c in series['chapters'] for n in c.get('figures', [])]:
         if not (site / 'assets' / 'illustrations' / name).exists():
             errors.append(f'Missing assets/illustrations/{name}')

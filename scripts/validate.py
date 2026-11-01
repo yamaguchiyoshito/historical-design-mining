@@ -18,7 +18,9 @@ LINK = re.compile(r'(?<!\!)\[[^\]]*\]\(([^)\s]+)\)')
 NEXT_NOTE = re.compile(r'^\*次回：第(\d+)回「(.+?)」\*$', re.M)
 BARE_URL = re.compile(r'https?://[A-Za-z0-9._~:/?#\[\]@!$&\'()*+,;=%-]+(?=[^\x00-\x7f])')
 FIGURE_DIR = 'assets/illustrations'
+VIGNETTE_DIR = 'assets/vignettes'
 FIGURE_REF = re.compile(r'^!\[([^\]]*)\]\(([^)\s]+)\)[ \t]*$', re.M)
+VIGNETTE_REF = re.compile(r'^!\[\]\(([^)\s]+)\)[ \t]*$', re.M)
 FIGURE_WITH_CAPTION = re.compile(r'^!\[[^\]]*\]\([^)\s]+\)[ \t]*\n\n\*図(\d+)-(\d+)：.+\*[ \t]*$', re.M)
 SVG_FORBIDDEN = {'script', 'foreignObject', 'image', 'iframe', 'style', 'a'}
 SVG_MIN_FONT = 14
@@ -30,6 +32,7 @@ class Result:
     headings: int = 0
     links: int = 0
     figures: int = 0
+    vignettes: int = 0
     svg_files: int = 0
 
 
@@ -104,7 +107,7 @@ def check_figures(chapter: dict, text: str, errors: list[str], result: Result) -
     """本文のSVG参照・キャプションと series.json の figures を突き合わせる。"""
     figures = chapter.get('figures', [])
     body = strip_code(text)
-    refs = FIGURE_REF.findall(body)
+    refs = [(alt, target) for alt, target in FIGURE_REF.findall(body) if target.startswith(f'../{FIGURE_DIR}/')]
     result.figures += len(refs)
     path = chapter['path']
     if [target for _, target in refs] != [f'../{FIGURE_DIR}/{name}' for name in figures]:
@@ -117,6 +120,22 @@ def check_figures(chapter: dict, text: str, errors: list[str], result: Result) -
     captions = [(int(a), int(b)) for a, b in FIGURE_WITH_CAPTION.findall(body)]
     if captions != [(chapter['number'], i) for i in range(1, len(figures) + 1)]:
         errors.append(f'{path}: each figure must be followed by a caption 図{chapter["number"]}-1 .. 図{chapter["number"]}-{len(figures)} in order')
+
+
+def check_vignettes(chapter: dict, text: str, errors: list[str], result: Result) -> None:
+    """文字を持たない装飾の線画（ひとこま）の参照を、series.json の vignettes と突き合わせる。"""
+    path = chapter['path']
+    body = strip_code(text)
+    refs = [t for t in VIGNETTE_REF.findall(body) if t.startswith(f'../{VIGNETTE_DIR}/')]
+    result.vignettes += len(refs)
+    if refs != [f'../{VIGNETTE_DIR}/{name}' for name in chapter.get('vignettes', [])]:
+        errors.append(f'{path}: vignette references must match series.json vignettes, in order')
+    for target in refs:
+        if not (ROOT / path).parent.joinpath(target).resolve().exists():
+            errors.append(f'{path}: missing vignette file {target}')
+    stray = [t for t in VIGNETTE_REF.findall(body) if not t.startswith(f'../{VIGNETTE_DIR}/')]
+    if stray:
+        errors.append(f'{path}: an image with no alt text must be a vignette in {VIGNETTE_DIR}/: {stray[0]}')
 
 
 def validate() -> tuple[Result, list[str]]:
@@ -167,6 +186,7 @@ def validate() -> tuple[Result, list[str]]:
             errors.append(f'{c["path"]}: last chapter must not announce a next chapter')
         check_links(path, text, errors, result)
         check_figures(c, text, errors, result)
+        check_vignettes(c, text, errors, result)
 
     listed = {name for c in chapters for name in c.get('figures', [])}
     cover = series.get('cover', '')
@@ -182,6 +202,20 @@ def validate() -> tuple[Result, list[str]]:
         errors.append(f'{FIGURE_DIR}/{name}: not listed in series.json')
     if sum(len(c.get('figures', [])) for c in chapters) + (1 if cover else 0) != len(listed):
         errors.append('series.json: a figure is listed more than once')
+    vignettes = [name for c in chapters for name in c.get('vignettes', [])]
+    vignette_dir = ROOT / VIGNETTE_DIR
+    vignette_found = {p.name for p in vignette_dir.glob('*.svg')} if vignette_dir.exists() else set()
+    if len(vignettes) != len(set(vignettes)):
+        errors.append('series.json: a vignette is listed more than once')
+    for name in sorted(set(vignettes) - vignette_found):
+        errors.append(f'{VIGNETTE_DIR}/{name}: listed in series.json but missing')
+    for name in sorted(vignette_found - set(vignettes)):
+        errors.append(f'{VIGNETTE_DIR}/{name}: not listed in series.json')
+    for name in sorted(vignette_found & set(vignettes)):
+        result.svg_files += 1
+        errors += svg_errors(vignette_dir / name)
+        if '<text' in (vignette_dir / name).read_text(encoding='utf-8'):
+            errors.append(f'{VIGNETTE_DIR}/{name}: a vignette must not contain text')
     for name in sorted(found & listed):
         result.svg_files += 1
         errors += svg_errors(figure_dir / name)
@@ -215,7 +249,7 @@ def validate() -> tuple[Result, list[str]]:
 def main() -> int:
     result, errors = validate()
     print(json.dumps({'chapters': result.chapters, 'headings': result.headings, 'links': result.links,
-                      'figures': result.figures, 'svg_files': result.svg_files, 'errors': errors}, ensure_ascii=False, indent=2))
+                      'figures': result.figures, 'vignettes': result.vignettes, 'svg_files': result.svg_files, 'errors': errors}, ensure_ascii=False, indent=2))
     return 1 if errors else 0
 
 
