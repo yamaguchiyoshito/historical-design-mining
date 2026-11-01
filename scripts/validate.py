@@ -43,9 +43,14 @@ def strip_code(text: str) -> str:
 
 
 def check_links(path: Path, text: str, errors: list[str], result: Result) -> None:
+    titles = {title for _, title in headings(text)[0]}
     for target in LINK.findall(strip_code(text)):
         result.links += 1
-        if re.match(r'[a-z][a-z0-9+.-]*:', target) or target.startswith('#') or target in GENERATED:
+        if target.startswith('#'):
+            if target[1:] not in titles:
+                errors.append(f'{path.relative_to(ROOT)}: no heading for in-page link {target}')
+            continue
+        if re.match(r'[a-z][a-z0-9+.-]*:', target) or target in GENERATED:
             continue
         dest = (path.parent / target.split('#')[0]).resolve()
         if not dest.is_relative_to(ROOT) or not dest.exists():
@@ -87,6 +92,10 @@ def validate() -> tuple[Result, list[str]]:
             errors.append(f'{c["path"]}: unresolved 要確認 marker')
         for m in BARE_URL.finditer(text):
             errors.append(f'{c["path"]}: URL runs into Japanese text without a space: {m.group(0)[:60]}')
+        note = NEXT_NOTE.search(text)
+        reference = re.search(r'^### 参考文献\s*$', text, re.M)
+        if note and reference and reference.start() > note.start():
+            errors.append(f'{c["path"]}: 参考文献 must come before the closing 次回 note')
         notes = NEXT_NOTE.findall(text)
         if i + 1 < len(chapters):
             n = chapters[i + 1]

@@ -16,6 +16,12 @@ READER = 'markdown+pipe_tables+autolink_bare_uris-tex_math_dollars-smart'
 SITE_INDEX_END = '<!-- SITE-INDEX-END'
 LEADING_H1 = re.compile(r'\A# [^\n]*\n+')
 MD_HREF = re.compile(r'href="([^"#?:]+\.md)((?:#[^"]*)?)"')
+HEADING = re.compile(r'<h([23]) id="([^"]+)"[^>]*>(.*?)</h\1>', re.S)
+TABLE = re.compile(r'<div class="table-scroll">(<table.*?</table>)</div>', re.S)
+ROW = re.compile(r'<tr([^>]*)>(.*?)</tr>', re.S)
+CELL = re.compile(r'<(t[hd])([^>]*)>(.*?)</\1>', re.S)
+
+FILTERS = [('all', 'すべて'), ('confirmed', '確認済み'), ('fixed', '修正'), ('open', '未解決あり')]
 
 
 def load_series() -> dict:
@@ -58,6 +64,107 @@ def render(text: str, *, drop_series_title: bool = False, shift: int = 0, prefix
     if prefix:
         args += ['--id-prefix', prefix]
     return wrap_tables(map_md_links(run_pandoc(text, args)))
+
+
+def localize_chapter_links(output: str, chapters: list[dict]) -> str:
+    """全文ページでは、他の回への相対リンク（NN-slug.html#節）を同じページ内のアンカーに直す。"""
+    for c in chapters:
+        stem = Path(c['path']).stem
+        output = re.sub(rf'href="{re.escape(stem)}\.html#([^"]+)"', lambda m: f'href="#ch{c["number"]}-{m.group(1)}"', output)
+    return output
+
+
+def section_toc(body: str, level: int, summary: str) -> str:
+    """本文中の見出し（level）から節目次を作る。見出しがなければ空文字。"""
+    items = [(ident, title) for lv, ident, title in HEADING.findall(body) if int(lv) == level]
+    if not items:
+        return ''
+    links = ''.join(f'<li><a href="#{ident}">{title}</a></li>' for ident, title in items)
+    return f'<details class="toc"><summary>{summary}（{len(items)}節）</summary><ol>{links}</ol></details>'
+
+
+def status_note(chapter: dict) -> str:
+    status = chapter.get('status')
+    if not status:
+        return ''
+    return f'<aside class="status" role="note"><strong>{html.escape(status["label"])}</strong>{html.escape(status["text"])}</aside>'
+
+
+def decorate_chapter(body: str, chapter: dict, *, title_tag: str, section_level: int, log_href: str) -> str:
+    """回のタイトル直後に状態ラベルと節目次を、末尾に検証ログへの案内を差し込む。"""
+    close = f'</{title_tag}>'
+    head, sep, rest = body.partition(close)
+    if not sep:
+        raise ValueError(f'{chapter["path"]}: title heading not found')
+    extra = status_note(chapter) + section_toc(rest, section_level, 'この回の節')
+    log_note = (f'<p class="log-link">この回の事実確認の内容と未解決事項は、'
+                f'<a href="{log_href}#第{chapter["number"]}回">検証ログ</a>で確認できます。</p>')
+    return f'{head}{close}\n{extra}{rest}{log_note}\n'
+
+
+def text_of(fragment: str) -> str:
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', fragment))).strip()
+
+
+def row_kinds(result: str, remaining: str) -> list[str]:
+    """検証ログの1行を「確認結果」と「残課題」の文面から分類する。"""
+    kinds = []
+    if result.startswith('確認済み'):
+        kinds.append('confirmed')
+    if result.startswith('修正') or result.startswith('確認済みと修正'):
+        kinds.append('fixed')
+    if remaining not in ('', 'なし'):
+        kinds.append('open')
+    return kinds
+
+
+def annotate_log_tables(output: str) -> str:
+    """検証ログの表に data-label（スマホのカード表示用）と data-kinds（絞り込み用）を付ける。
+    行ごとの区分に加え、表全体の区分を表の外側（.table-scroll）にも持たせ、該当行のない表を隠せるようにする。"""
+    def table_repl(m: re.Match) -> str:
+        table = m.group(1)
+        header: list[str] = []
+        is_case_table = False
+        table_kinds: list[str] = []
+
+        def row_repl(r: re.Match) -> str:
+            nonlocal header, is_case_table
+            attrs, inner = r.group(1), r.group(2)
+            cells = CELL.findall(inner)
+            if cells and cells[0][0] == 'th':
+                header = [text_of(c[2]) for c in cells]
+                is_case_table = '確認結果' in header and '残課題' in header
+                return r.group(0)
+            index = iter(range(len(header)))
+
+            def cell_repl(c: re.Match) -> str:
+                i = next(index, None)
+                label = f' data-label="{html.escape(header[i])}"' if i is not None else ''
+                return f'<td{c.group(2)}{label}>{c.group(3)}</td>'
+            new_inner = CELL.sub(cell_repl, inner)
+            if is_case_table:
+                values = {header[i]: text_of(c[2]) for i, c in enumerate(cells) if i < len(header)}
+                kinds = row_kinds(values.get('確認結果', ''), values.get('残課題', ''))
+                table_kinds.extend(k for k in kinds if k not in table_kinds)
+                attrs += f' data-kinds="{" ".join(kinds)}"'
+            return f'<tr{attrs}>{new_inner}</tr>'
+
+        annotated = ROW.sub(row_repl, table)
+        wrapper = f' data-cases data-kinds="{" ".join(table_kinds)}"' if is_case_table else ''
+        return f'<div class="table-scroll"{wrapper}>{annotated}</div>'
+    return TABLE.sub(table_repl, output)
+
+
+def log_filter_bar() -> str:
+    inputs = ''.join(
+        f'<input type="radio" name="log-filter" id="f-{key}"{" checked" if key == "all" else ""}>'
+        f'<label for="f-{key}">{label}</label>' for key, label in FILTERS)
+    return f'<fieldset class="log-filter"><legend>区分で絞り込む</legend>{inputs}</fieldset>\n'
+
+
+def add_log_filter(output: str) -> str:
+    marker = '<h2 id="第1回"'
+    return output.replace(marker, log_filter_bar() + marker, 1)
 
 
 def page(series: dict, *, title: str, description: str, body: str, out_rel: Path, wide: bool = False) -> str:
@@ -116,6 +223,7 @@ def build(out: Path) -> list[Path]:
     shutil.copyfile(STYLES, out / 'assets' / 'styles.css')
     (out / '.nojekyll').write_text('', encoding='utf-8')
     written: list[Path] = []
+    log_page = series['log'][:-3] + '.html'
 
     def emit(rel: str, content: str) -> None:
         target = out / rel
@@ -131,25 +239,30 @@ def build(out: Path) -> list[Path]:
     for i, c in enumerate(chapters):
         source = (ROOT / c['path']).read_text(encoding='utf-8')
         nav = chapter_nav(series, i)
-        body = f'{nav}\n<article class="chapter">\n{render(source, drop_series_title=True, shift=-1)}</article>\n{nav}'
+        article = decorate_chapter(render(source, drop_series_title=True, shift=-1), c, title_tag='h1', section_level=2,
+                                   log_href=f'../{log_page}')
         rel = f'articles/{Path(c["path"]).stem}.html'
         emit(rel, page(series, title=f'第{c["number"]}回：{c["title"]} ｜ {series["title"]}', description=c['summary'],
-                       body=body, out_rel=Path(rel)))
+                       body=f'{nav}\n<article class="chapter">\n{article}</article>\n{nav}', out_rel=Path(rel)))
 
-    sections = []
+    sections, toc_items = [], []
     for c in chapters:
         source = (ROOT / c['path']).read_text(encoding='utf-8')
-        sections.append(f'<article class="chapter">\n{render(source, drop_series_title=True, prefix=f"ch{c["number"]}-")}</article>')
-    toc = ''.join(f'<li><a href="#ch{c["number"]}-{c["slug"]}">第{c["number"]}回：{html.escape(c["title"])}</a></li>' for c in chapters)
-    # 各回の h2 は Pandoc が見出し文字列から ID を作るため、目次用に別の ID を付けた区切りを置く。
-    sections = [f'<div id="ch{c["number"]}-{c["slug"]}"></div>\n{s}' for c, s in zip(chapters, sections)]
-    complete = f'<h1>{html.escape(series["title"])}　全{len(chapters)}回</h1>\n<nav class="toc" aria-label="全文の目次"><ol>{toc}</ol></nav>\n' + '\n<hr class="chapter-break">\n'.join(sections)
-    emit('complete.html', page(series, title=f'全文 ｜ {series["title"]}', description=series['subtitle'], body=complete, out_rel=Path('complete.html')))
+        prefix = f'ch{c["number"]}-'
+        article = decorate_chapter(localize_chapter_links(render(source, drop_series_title=True, prefix=prefix), chapters),
+                                   c, title_tag='h2', section_level=3, log_href=log_page)
+        title_id = HEADING.search(article).group(2)
+        sections.append(f'<article class="chapter">\n{article}</article>')
+        toc_items.append(f'<li><a href="#{title_id}">第{c["number"]}回：{html.escape(c["title"])}</a></li>')
+    complete = (f'<h1>{html.escape(series["title"])}　全{len(chapters)}回</h1>\n'
+                f'<nav class="toc" aria-label="全文の目次"><ol>{"".join(toc_items)}</ol></nav>\n'
+                + '\n<hr class="chapter-break">\n'.join(sections))
+    emit('complete.html', page(series, title=f'全文 ｜ {series["title"]}', description=series['subtitle'], body=complete,
+                               out_rel=Path('complete.html')))
 
-    log_rel = series['log'][:-3] + '.html'
-    log_body = f'<article class="log">\n{render((ROOT / series["log"]).read_text(encoding="utf-8"))}</article>'
-    emit(log_rel, page(series, title=f'検証ログ ｜ {series["title"]}', description='事実確認の対象、資料、結果、未解決事項の記録',
-                       body=log_body, out_rel=Path(log_rel), wide=True))
+    log_html = add_log_filter(annotate_log_tables(render((ROOT / series['log']).read_text(encoding='utf-8'))))
+    emit(log_page, page(series, title=f'検証ログ ｜ {series["title"]}', description='事実確認の対象、資料、結果、未解決事項の記録',
+                        body=f'<article class="log">\n{log_html}</article>', out_rel=Path(log_page), wide=True))
     return written
 
 

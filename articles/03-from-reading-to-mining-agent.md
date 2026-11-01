@@ -118,7 +118,7 @@ historical-design-mining/
     └── design-spec.md
 ```
 
-`SKILL.md`には、Agent Skillの仕様が必須とする `name` と `description` のメタデータに続けて、目的と全体手順を書く。`references/` には工程別の方法、`templates/` には出力形式を置く。なお、公開されているAgent Skillの仕様（agentskills.io）がテンプレートなどの置き場として挙げるのは `assets/` である。ここでは役割がわかりやすいように `templates/` と呼ぶが、使う環境によっては `assets/` に読み替える。
+`SKILL.md`には、Agent Skillの仕様が必須とする `name` と `description` のメタデータに続けて、目的と全体手順を書く。`references/` には工程別の方法、`templates/` には出力形式を置く。なお、公開されているAgent Skillの仕様（[agentskills.io](#参考文献)）がテンプレートなどの置き場として挙げるのは `assets/` である。ここでは役割がわかりやすいように `templates/` と呼ぶが、使う環境によっては `assets/` に読み替える。
 
 調査の成果物は次のように管理する。`sources.md` は原典の書誌と原文位置の一覧、残りの四つは四つの工程の出力に対応する。
 
@@ -139,7 +139,7 @@ research/
 
 『Notes on the Synthesis of Form』を入力したとする。まず、複雑な設計課題における要求や制約の相互作用と、問題構造に基づく分割という原理を抽出する。
 
-次に設計パターン、モジュール分割、グラフ分割、要求工学などの関連分野と、初期の方法の再現を試みた先行研究（第2回で取り上げたGabriel, 2023など）を調べる。
+次に設計パターン、モジュール分割、グラフ分割、要求工学などの関連分野と、初期の方法の再現を試みた先行研究（第2回で取り上げた[Gabriel, 2023](02-excavating-forgotten-designs.md#参考文献)など）を調べる。
 
 現代的な拡張として、自然言語の要求仕様から生成AIが依存関係を抽出し、グラフを作成して分割候補を求める仕組みを考えられる。
 
@@ -171,9 +171,11 @@ AIが構想を有用だと判断することと、その構想に実際の価値
 
 ---
 
-*次回：第4回「古い器に、新しい水を入れる」*
-
 ### 参考文献
 
 - Agent Skills. *Specification*. https://agentskills.io/specification （SKILL.mdの形式とディレクトリ構成）
 - Richard P. Gabriel (2023). *Notes on “Notes on the Synthesis of Form”*. 書誌は第2回の参考文献を参照。
+
+---
+
+*次回：第4回「古い器に、新しい水を入れる」*

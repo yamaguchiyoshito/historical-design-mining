@@ -6,6 +6,7 @@
   --accent-soft: #f1e6d6;
   --line: #ddd6c8;
   --code-bg: #f1eee6;
+  --shadow: rgba(0, 0, 0, 0.18);
   color-scheme: light dark;
 }
 
@@ -18,6 +19,7 @@
     --accent-soft: #2a241b;
     --line: #3a362e;
     --code-bg: #23211c;
+    --shadow: rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -32,10 +34,11 @@ body {
   font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.95;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  line-break: strict;
 }
 
-a { color: var(--accent); text-underline-offset: 0.2em; }
+a { color: var(--accent); text-underline-offset: 0.2em; overflow-wrap: anywhere; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .skip {
@@ -69,13 +72,13 @@ body.wide main { max-width: 56rem; }
 body.wide .site-header, body.wide .site-footer { max-width: 56rem; }
 main { padding-top: 1.5rem; padding-bottom: 3rem; }
 
-h1, h2, h3 { line-height: 1.5; font-weight: 700; }
+h1, h2, h3 { line-height: 1.5; font-weight: 700; text-wrap: balance; }
 h1 { font-size: 1.6rem; margin: 1.5rem 0 1rem; }
 h2 { font-size: 1.3rem; margin: 3rem 0 1rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
 h3 { font-size: 1.1rem; margin: 2rem 0 0.75rem; }
 .chapter h2:first-child, .index h2:first-child, .log h2:first-child { border-top: 0; padding-top: 0; }
 
-p { margin: 0 0 1.1rem; }
+p { margin: 0 0 1.1rem; text-wrap: pretty; }
 strong { font-weight: 700; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 hr.chapter-break { margin: 4rem 0; }
@@ -87,7 +90,16 @@ code { background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 3px; fo
 pre { background: var(--code-bg); padding: 1rem; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: 0.88rem; }
 pre code { background: none; padding: 0; font-size: inherit; }
 
-.table-scroll { overflow-x: auto; margin: 1.25rem 0; }
+.table-scroll {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  background:
+    linear-gradient(to right, var(--bg) 30%, transparent) left center / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 30%, transparent) right center / 2rem 100% no-repeat local,
+    linear-gradient(to right, var(--shadow), transparent) left center / 0.75rem 100% no-repeat scroll,
+    linear-gradient(to left, var(--shadow), transparent) right center / 0.75rem 100% no-repeat scroll;
+}
+.table-scroll code { white-space: nowrap; }
 table { border-collapse: collapse; font-size: 0.9rem; line-height: 1.7; min-width: 100%; }
 th, td { border: 1px solid var(--line); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
 th { background: var(--accent-soft); white-space: nowrap; }
@@ -126,4 +138,83 @@ th { background: var(--accent-soft); white-space: nowrap; }
 @media print {
   .site-header nav, .chapter-nav, .skip { display: none; }
   body { background: #fff; color: #000; }
+}
+
+.status {
+  margin: 0 0 1.5rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.status strong { margin-right: 0.75rem; color: var(--accent); }
+
+details.toc {
+  margin: 0 0 2rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+details.toc summary { cursor: pointer; font-weight: 700; }
+details.toc ol { margin: 0.5rem 0 0; padding-left: 1.5rem; }
+
+.log-link {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* 検証ログ: 区分での絞り込み（JavaScriptを使わず :has() で行う） */
+.log-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.log-filter legend { padding: 0 0.5rem; font-size: 0.85rem; color: var(--muted); }
+.log-filter input { position: absolute; opacity: 0; pointer-events: none; }
+.log-filter label {
+  padding: 0.15rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.log-filter input:checked + label { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.log-filter input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.log:has(#f-confirmed:checked) tr[data-kinds]:not([data-kinds~="confirmed"]),
+.log:has(#f-fixed:checked) tr[data-kinds]:not([data-kinds~="fixed"]),
+.log:has(#f-open:checked) tr[data-kinds]:not([data-kinds~="open"]),
+.log:has(#f-confirmed:checked) .table-scroll[data-cases]:not([data-kinds~="confirmed"]),
+.log:has(#f-fixed:checked) .table-scroll[data-cases]:not([data-kinds~="fixed"]),
+.log:has(#f-open:checked) .table-scroll[data-cases]:not([data-kinds~="open"]) {
+  display: none;
+}
+
+/* 該当行のない表を隠すとき、直前の見出し（第N回）も隠す */
+.log:has(#f-confirmed:checked) h2:has(+ .table-scroll[data-cases]:not([data-kinds~="confirmed"])),
+.log:has(#f-fixed:checked) h2:has(+ .table-scroll[data-cases]:not([data-kinds~="fixed"])),
+.log:has(#f-open:checked) h2:has(+ .table-scroll[data-cases]:not([data-kinds~="open"])) {
+  display: none;
+}
+
+/* 検証ログ: 狭い画面では表をカードに組み替える */
+@media (max-width: 40rem) {
+  .log .table-scroll { overflow: visible; background: none; }
+  .log table, .log tbody, .log tr, .log td { display: block; width: 100%; }
+  .log thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .log tr { margin: 0 0 1rem; padding: 0.25rem 0.9rem; border: 1px solid var(--line); border-radius: 6px; }
+  .log td { border: 0; padding: 0.4rem 0; min-width: 0; }
+  .log td::before { content: attr(data-label); display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted); }
+  .log code, .log .table-scroll code { white-space: normal; overflow-wrap: anywhere; }
 }

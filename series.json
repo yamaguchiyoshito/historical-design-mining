@@ -29,14 +29,22 @@
       "slug": "from-reading-to-mining-agent",
       "title": "文献を読むAIから、設計を発掘するAIへ",
       "summary": "探索、継承調査、仕様化、評価の四工程を、入力・出力・失敗条件つきのAgent Skillとして設計する。",
-      "path": "articles/03-from-reading-to-mining-agent.md"
+      "path": "articles/03-from-reading-to-mining-agent.md",
+      "status": {
+        "label": "設計案",
+        "text": "この回で示すAgent Skillは設計案です。実装や動作確認はしていません。"
+      }
     },
     {
       "number": 4,
       "slug": "reimplementing-old-ideas",
       "title": "古い器に、新しい水を入れる",
       "summary": "忠実な再現と現代的な拡張を区別し、比較実験の条件を示す。実施前の実験計画として、第1回の問いに答える。",
-      "path": "articles/04-reimplementing-old-ideas.md"
+      "path": "articles/04-reimplementing-old-ideas.md",
+      "status": {
+        "label": "実験計画",
+        "text": "この回の再実装と比較実験は未実施です。結果はまだ存在しません。"
+      }
     }
   ]
 }
