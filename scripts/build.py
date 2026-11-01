@@ -17,6 +17,7 @@ READER = 'markdown+pipe_tables+autolink_bare_uris-tex_math_dollars-smart-implici
 SITE_INDEX_END = '<!-- SITE-INDEX-END'
 LEADING_H1 = re.compile(r'\A# [^\n]*\n+')
 MD_HREF = re.compile(r'href="([^"#?:]+\.md)((?:#[^"]*)?)"')
+KEY_STATEMENT = re.compile(r'<p><strong>((?:(?!</strong>).)*)</strong></p>', re.S)
 COVER = re.compile(r'<p><img src="(assets/illustrations/[^"]+)" alt="([^"]*)" ?/?></p>')
 FIGURE = re.compile(r'<p><img src="([^"]+)" alt="([^"]*)" ?/?></p>\s*<p><em>(図\d+-\d+：.*?)</em></p>', re.S)
 HEADING = re.compile(r'<h([23]) id="([^"]+)"[^>]*>(.*?)</h\1>', re.S)
@@ -78,13 +79,19 @@ def relocate_assets(output: str) -> str:
     return output.replace('"../assets/', '"assets/')
 
 
-def render(text: str, *, drop_series_title: bool = False, shift: int = 0, prefix: str = '') -> str:
+def mark_key_statements(output: str) -> str:
+    """太字だけで成り立つ段落（各節の結論の一文）に class="key" を付け、CSSで目立たせる。"""
+    return KEY_STATEMENT.sub(r'<p class="key"><strong>\1</strong></p>', output)
+
+
+def render(text: str, *, drop_series_title: bool = False, shift: int = 0, prefix: str = '', key_statements: bool = False) -> str:
     if drop_series_title:
         text = LEADING_H1.sub('', text, count=1)
     args = ['--from', READER, '--to', 'html5', '--wrap=none', f'--shift-heading-level-by={shift}']
     if prefix:
         args += ['--id-prefix', prefix]
-    return wrap_figures(wrap_tables(map_md_links(run_pandoc(text, args))))
+    output = wrap_figures(wrap_tables(map_md_links(run_pandoc(text, args))))
+    return mark_key_statements(output) if key_statements else output
 
 
 def localize_chapter_links(output: str, chapters: list[dict]) -> str:
@@ -186,10 +193,34 @@ def add_log_filter(output: str) -> str:
     return output.replace(marker, log_filter_bar() + marker, 1)
 
 
-def page(series: dict, *, title: str, description: str, body: str, out_rel: Path, wide: bool = False) -> str:
+ICON_LIST = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h10" fill="none" '
+             'stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>')
+ICON_CLOSE = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" '
+              'stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>')
+
+
+def drawer(series: dict, links: list[str], current: int | None, root: str) -> str:
+    """回の一覧を右から出すドロワー（CSSのみ）。チェックボックスの状態を :has() で読んで開閉する。"""
+    items = []
+    for i, (c, href) in enumerate(zip(series['chapters'], links)):
+        here = i == current
+        items.append(f'<a class="chapter-link{" current" if here else ""}" href="{href}"{" aria-current=\"page\"" if here else ""}>'
+                     f'<span>{c["number"]}</span>{html.escape(c["title"])}</a>')
+    return (f'<label class="toc-backdrop" for="toc-state"></label>\n'
+            f'<aside class="toc-drawer" aria-label="回の一覧">\n'
+            f'<div class="toc-drawer-head"><strong>全{len(series["chapters"])}回</strong>'
+            f'<label class="toc-close" for="toc-state" aria-label="閉じる">{ICON_CLOSE}</label></div>\n'
+            f'<nav aria-label="回の一覧">{"".join(items)}</nav>\n'
+            f'<div class="toc-drawer-foot"><a href="{root}index.html">目次ページ</a> ／ <a href="{root}complete.html">全文を一つのページで読む</a></div>\n'
+            f'</aside>')
+
+
+def page(series: dict, *, title: str, description: str, body: str, out_rel: Path, wide: bool = False,
+         current: int | None = None, chapter_links: list[str] | None = None) -> str:
     root = '../' * (len(out_rel.parts) - 1)
     site = html.escape(series['title'])
     body_class = ' class="wide"' if wide else ''
+    links = chapter_links or [f'{root}articles/{Path(c["path"]).stem}.html' for c in series['chapters']]
     return f'''<!doctype html>
 <html lang="{series['language']}">
 <head>
@@ -201,13 +232,17 @@ def page(series: dict, *, title: str, description: str, body: str, out_rel: Path
 </head>
 <body{body_class}>
 <a class="skip" href="#main">本文へ移動</a>
+<input type="checkbox" id="toc-state" class="toc-state" aria-label="回の一覧を開く">
 <header class="site-header">
+<div class="site-header-inner">
 <a class="site-name" href="{root}index.html">{site}</a>
-<nav aria-label="サイト内">
-<a href="{root}index.html">目次</a>
+<nav class="header-actions" aria-label="サイト内">
 <a href="{root}complete.html">全文</a>
+<label class="toc-toggle" for="toc-state">{ICON_LIST}回の一覧</label>
 </nav>
+</div>
 </header>
+{drawer(series, links, current, root)}
 <main id="main">
 {body}
 </main>
@@ -258,25 +293,26 @@ def build(out: Path) -> list[Path]:
     for i, c in enumerate(chapters):
         source = (ROOT / c['path']).read_text(encoding='utf-8')
         nav = chapter_nav(series, i)
-        article = decorate_chapter(render(source, drop_series_title=True, shift=-1), c, title_tag='h1', section_level=2)
+        article = decorate_chapter(render(source, drop_series_title=True, shift=-1, key_statements=True), c, title_tag='h1', section_level=2)
         rel = f'articles/{Path(c["path"]).stem}.html'
         emit(rel, page(series, title=f'第{c["number"]}回：{c["title"]} ｜ {series["title"]}', description=c['summary'],
-                       body=f'{nav}\n<article class="chapter">\n{article}</article>\n{nav}', out_rel=Path(rel)))
+                       body=f'{nav}\n<article class="chapter">\n{article}</article>\n{nav}', out_rel=Path(rel), current=i))
 
-    sections, toc_items = [], []
+    sections, toc_items, title_ids = [], [], []
     for c in chapters:
         source = (ROOT / c['path']).read_text(encoding='utf-8')
         prefix = f'ch{c["number"]}-'
-        article = decorate_chapter(relocate_assets(localize_chapter_links(render(source, drop_series_title=True, prefix=prefix), chapters)),
+        article = decorate_chapter(relocate_assets(localize_chapter_links(render(source, drop_series_title=True, prefix=prefix, key_statements=True), chapters)),
                                    c, title_tag='h2', section_level=3)
         title_id = HEADING.search(article).group(2)
+        title_ids.append(title_id)
         sections.append(f'<article class="chapter">\n{article}</article>')
         toc_items.append(f'<li><a href="#{title_id}">第{c["number"]}回：{html.escape(c["title"])}</a></li>')
     complete = (f'<h1>{html.escape(series["title"])}　全{len(chapters)}回</h1>\n'
                 f'<nav class="toc" aria-label="全文の目次"><ol>{"".join(toc_items)}</ol></nav>\n'
                 + '\n<hr class="chapter-break">\n'.join(sections))
     emit('complete.html', page(series, title=f'全文 ｜ {series["title"]}', description=series['subtitle'], body=complete,
-                               out_rel=Path('complete.html')))
+                               out_rel=Path('complete.html'), chapter_links=[f'#{t}' for t in title_ids]))
 
     log_html = add_log_filter(annotate_log_tables(render((ROOT / series['log']).read_text(encoding='utf-8'))))
     emit(log_page, page(series, title=f'検証ログ ｜ {series["title"]}', description='事実確認の対象、資料、結果、未解決事項の記録',
